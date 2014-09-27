@@ -7,4 +7,4 @@ project(CSPL)
 add_subdirectory (CSPL)
 add_subdirectory (CSPL/Stats)
 
-add_library (CSPL $<TARGET_OBJECTS:CSPL_Stats>)
+add_library (CSPL SHARED $<TARGET_OBJECTS:CSPL_Stats>)
