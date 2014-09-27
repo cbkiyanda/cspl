@@ -1,5 +1,2 @@
-add_library (CSPL_Stats SHARED CSPL_Stats_CDF.c CSPL_Stats.h CSPL_Stats_CDF.h)
-
-target_include_directories (CSPL_Stats PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-
+add_library (CSPL_Stats OBJECT CSPL_Stats_CDF.c CSPL_Stats.h CSPL_Stats_CDF.h)
+set_target_properties( CSPL_Stats PROPERTIES POSITION_INDEPENDENT_CODE TRUE )
