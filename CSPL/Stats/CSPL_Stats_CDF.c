@@ -1,15 +1,38 @@
 
-#include <stdlib.h>
+#include <math.h>   
+#include <stdlib.h> /* qsort */
 #include <string.h> /* memcpy */
 
 #include "CSPL_Stats_CDF.h"
 #include "../Sort/CSPL_Sort.h"
+#include "../Array/CSPL_Array.h"
 
 /*   Compute the Cumulative distribution function from a tabular 
  *   set of data, the CDF is then defined as the percent of measurements
  *   less than X along the data.
  */
 
+
+void CSPL_Stats_tCDF_confidence_bands(double *cdf,
+				      double *lowerband,
+				      double *upperband,
+				      double conf, 
+				      long n ) {
+  /* given a CDF computed from an array compute and return the confidence  */
+  /* bands of the CDF, this is done using the Dvoretzky-Kiefer-Wolfowitz (DKW)  */
+  /* inequality     */
+  /* the conf is the desired confidence, 95% is 0.05, 99% is 0.01   */
+  double epsilon;
+  long i;
+
+  epsilon = sqrt( (1./(2.*(double)n)) * log((2./conf)) );
+  for (i=0;i<n;i++) {
+    lowerband[i] = cdf[i]-epsilon;
+    upperband[i] = cdf[i]+epsilon;
+  }
+  CSPL_Array_clip(lowerband, 0, 1, n);    
+  CSPL_Array_clip(upperband, 0, 1, n);    
+}
 
 void CSPL_Stats_tCDF(double *datain, 
 		     double *cdfout,
