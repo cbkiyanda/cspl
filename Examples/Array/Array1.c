@@ -31,6 +31,10 @@ int main(void) {
   v2 = CSPL_Array_max(dat2, 5);
   printf("%lf\t%lf\n", v1, v2);
 
+  printf("Range\n");
+  v1 = CSPL_Array_range(dat1, 5);
+  v2 = CSPL_Array_range(dat2, 5);
+  printf("%lf\t%lf\n", v1, v2);
   
 
   CSPL_Array_add(dat1, dat2, dtmp, 5);

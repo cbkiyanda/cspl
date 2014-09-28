@@ -34,5 +34,12 @@ double CSPL_Array_max(double *inval, /* input array */
   return (max);
 }
 
+double CSPL_Array_range(double *inval, /* input array */
+			long n) {      /* length of array */
+  double min, max;
+  min = CSPL_Array_min(inval, n);
+  max = CSPL_Array_max(inval, n);
+  return (max-min);
+}
 
 

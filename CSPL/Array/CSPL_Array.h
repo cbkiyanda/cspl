@@ -48,6 +48,10 @@ double CSPL_Array_min(double *inval, /* input array */
 double CSPL_Array_max(double *inval, /* input array */
 		      long n);       /* length of array */
 
+/* return the range of an array */
+double CSPL_Array_range(double *inval, /* input array */
+			long n);       /* length of array */
+
 /* Function to clip an array of doubles to an upper and lower bound */
 /* If each element is outside the clip it is replaced with the clip value */
 /* replaces the input array with the clipped version */
