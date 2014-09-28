@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+#include "CSPL_Test.h"
+#include "../CSPL/Stats/CSPL_Stats.h"
+
+
+#test test_CSPL_Stats_mean
+   double data[5] = {2,3.4, 5.6, 4.5, 3.1};
+    fail_unless(CSPL_Stats_mean(data, 5) == 3.72, 
+    				      "CSPL_Stats_mean failed");
+
+#test test_CSPL_Stats_median
+    double data[5] = {2,3.4, 5.6, 4.5, 3.1};
+    fail_unless(CSPL_Stats_median(data, 5) == 3.4, 
+    				      "CSPL_Stats_median failed");
+				      
+#test test_CSPL_Stats_geometric_mean
+    double data[5] = {2,3.4, 5.6, 4.5, 3.1};
+    // printf("\ngeomean=%lf\n", CSPL_Stats_geometric_mean(data, 5));
+    ck_assert( float_test(CSPL_Stats_geometric_mean(data, 5), 3.507957, 1e-5));
+
+#test test_CSPL_Stats_tCDF
+      double data[5] = {2,3.4, 5.6, 4.5, 3.1};
+      double outval[5];
+      double answer[5] = {0.2, 0.4, 0.6, 0.8, 1.0};
+      long i;
+      CSPL_Stats_tCDF(data, outval, 5);
+      for (i=0;i<5;i++) {
+          ck_assert( float_test(outval[i], answer[i], 1e-5));
+	  }
+
+#test test_CSPL_Stats_tCDF_confidence_bands
+      double data[5] =  {0.2, 0.4, 0.6, 0.8, 1.0};
+      double outval1[5];
+      double outval2[5];
+      double answer1[5] = {0.0, 0.0, 0.0, 0.072105, 0.272105};
+      double answer2[5] = {0.927895, 1.0, 1.0, 1.0, 1.0};
+      long i;
+      CSPL_Stats_tCDF_confidence_bands(data, outval1, outval2, 0.01, 5);
+      /* for (i=0;i<5;i++) {
+      printf("%lf\t%lf\n", outval1[i], outval2[i]);
+      } */
+      for (i=0;i<5;i++) {
+          ck_assert( float_test(outval1[i], answer1[i], 1e-5));
+          ck_assert( float_test(outval2[i], answer2[i], 1e-5));
+	  }	  
+	  
