@@ -8,9 +8,9 @@
  *  reperated values all have the same CDF value and that value
  *  is the upper (not averaged) probability.
  */
-void CSPL_Stats_tCDF(double *datain, /* input array */
-		     double *cdfout, /* output CDF (sorted) */
-		     long n);        /* array length */
+void CSPL_Stats_tCDF(double *datain, /* (input) input array */
+		     double *cdfout, /* (output) output CDF (sorted) */
+		     long n);        /* (input) array length */
 
 
 
@@ -20,11 +20,11 @@ void CSPL_Stats_tCDF(double *datain, /* input array */
  * inequality     
  * the conf is the desired confidence, 95% is 0.05, 99% is 0.01   
  */
-void CSPL_Stats_tCDF_confidence_bands(double *cdf,         /* input CDF */
-				      double *lowerband,   /* lower edges of the confidence band */
-				      double *upperband,   /* upper edges of the confidence band */
-				      double conf,         /* confidence interval e.g. 0.01 or 0.05 */
-				      long n );            /* array length */
+void CSPL_Stats_tCDF_confidence_bands(double *cdf,         /* (input) input CDF */
+				      double *lowerband,   /* (output) lower edges of the confidence band */
+				      double *upperband,   /* (output) upper edges of the confidence band */
+				      double conf,         /* (input) confidence interval e.g. 0.01 or 0.05 */
+				      long n );            /* (input) array length */
  
 
 
