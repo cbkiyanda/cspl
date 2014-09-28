@@ -5,7 +5,6 @@
 
 #include <stdio.h>
 
-#include "CSPL_Stats_CDF.h"
 #include "CSPL_Stats.h"
 
 int main(void) {

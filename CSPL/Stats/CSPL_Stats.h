@@ -1,6 +1,8 @@
 #ifndef CSPL_Stats_H
 #define CSPL_Stats_H
 
+#include "CSPL_Stats_CDF.h"
+
 /* Compute the arithmetic mean of an array */
 double CSPL_Stats_mean(double *inval,    // (input) input array 
 		 long n);                // (input) length of array

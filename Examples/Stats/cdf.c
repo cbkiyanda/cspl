@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "CSPL_Stats_CDF.h"
+#include "CSPL_Stats.h"
 #include "CSPL_Array.h"
 
 
