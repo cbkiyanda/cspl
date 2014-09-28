@@ -2,6 +2,7 @@
 set ( CSPL_Stats_Files 
     CSPL_Stats_CDF.c 
     CSPL_Stats.h 
+    CSPL_Stats.c 
     CSPL_Stats_CDF.h )
 
 add_library (CSPL_Stats OBJECT ${CSPL_Stats_Files})
