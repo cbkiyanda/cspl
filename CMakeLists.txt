@@ -8,14 +8,15 @@ project(CSPL)
 
 add_subdirectory (CSPL)
 add_subdirectory (CSPL/Stats)
+add_subdirectory (CSPL/Sort)
 
-add_library (CSPL SHARED $<TARGET_OBJECTS:CSPL_Stats>)
+add_library (CSPL $<TARGET_OBJECTS:CSPL_Stats> $<TARGET_OBJECTS:CSPL_Sort>)
 
-find_program(ctypesgen ctypesgen.py)
-if(NOT ctypesgen)
+find_program(CTYPESGEN_LOCATION ctypesgen.py)
+if(NOT CTYPESGEN_LOCATION)
   message(WARNING "Could not find ctypesgen.py command, python cannot be build")
   # put code here to build the python
-endif(NOT ctypesgen)
+endif(NOT CTYPESGEN_LOCATION)
 
 
 

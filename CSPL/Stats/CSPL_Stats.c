@@ -1,16 +1,10 @@
 
-#include <stdlib.h> /* memcpy */
+#include <stdlib.h> /* qsort */
 #include <string.h> /* memcpy */
+
 #include "CSPL_Stats.h"
+#include "../Sort/CSPL_Sort.h"
 
-// from stdlib example docs
-static int compare_doubles(const void *a, const void *b)
-{
-  const double *da = (const double *) a;
-  const double *db = (const double *) b;
-
-  return (*da > *db) - (*da < *db);
-}
 
 
 double CSPL_mean(double *inval, long n) {
@@ -22,7 +16,7 @@ double CSPL_mean(double *inval, long n) {
   return (sum/(double)n);
 }
 
-double CSPL_meadian(double *inval, long n) {
+double CSPL_median(double *inval, long n) {
   double *incopy; // do this so that the input array is not changed
   double median; 
   long index;
@@ -32,7 +26,7 @@ double CSPL_meadian(double *inval, long n) {
   memcpy(incopy, inval, sizeof(double)*n);
   
   // sort the data
-  qsort(incopy, n, sizeof(double *), compare_doubles);
+  qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
   if ( 0 == n % 2) {
     index = (n/2)-1;
     tmpvals[0] = incopy[index];

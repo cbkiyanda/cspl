@@ -20,6 +20,8 @@ int main(void) {
   printf("mean1: %lf\n", CSPL_mean(dat1, 5));
   printf("mean2: %lf\n", CSPL_mean(dat2, 6));
 
+  printf("median1: %lf\n", CSPL_median(dat1, 5));
+  printf("median2: %lf\n", CSPL_median(dat2, 6));
 
 
   return(0);

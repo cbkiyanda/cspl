@@ -3,20 +3,12 @@
 #include <string.h> /* memcpy */
 
 #include "CSPL_Stats_CDF.h"
+#include "../Sort/CSPL_Sort.h"
 
 /*   Compute the Cumulative distribution function from a tabular 
  *   set of data, the CDF is then defined as the percent of measurements
  *   less than X along the data.
  */
-
-// from stdlib example docs
-static int compare_doubles(const void *a, const void *b)
-{
-  const double *da = (const double *) a;
-  const double *db = (const double *) b;
-
-  return (*da > *db) - (*da < *db);
-}
 
 
 void CSPL_Stats_tCDF(double *datain, 
@@ -38,7 +30,7 @@ void CSPL_Stats_tCDF(double *datain,
   memcpy(incopy, datain, sizeof(double)*n);
   
   // sort the data
-  qsort(incopy, n, sizeof(double *), compare_doubles);
+  qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
   for (i=0;i<n;i++) {
     count = 0;
     while(incopy[count] <= incopy[i]) {
