@@ -1,7 +1,9 @@
 
+#include <errno.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "CSPL_Array.h"
 
@@ -53,8 +55,10 @@ void CSPL_Array_filedump1d(const char *filename, long n, int m, ...) {
   va_list ar;
   double **arrs; // these are the arrays we are dumping
 
-  if ((fp = fopen(filename, "w")) == NULL)
-    exit(-1);
+  if ((fp = fopen(filename, "w")) == NULL) {
+    fprintf(stderr, "%s\n", strerror(ENOENT));
+    exit(ENOENT);
+  }
 
   arrs = (double **)calloc(n, sizeof(double));
   // there is already memory for these allocated outside and passed in
