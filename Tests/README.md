@@ -1,7 +1,7 @@
 Testing
 -------
 
-At this point testing is done via the checkmk awk script that i shipped with check.
+At this point testing is done via the checkmk awk script that is shipped with check.
 
 To run the tests: (as of 9/28/2014)
 1) Build CSPL with a static library
