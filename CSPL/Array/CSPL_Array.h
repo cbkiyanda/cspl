@@ -60,6 +60,12 @@ void CSPL_Array_clip(double *inval,  /* input array to clip  */
 		     double max,     /* max value to clip to */
 		     long n);        /* length of the array */
 
+/* Variadic function to dump out some number of arrays of the same length to CSV */
+void CSPL_Array_filedump1d(const char *filename,  /* filename to output to, overwritten */
+			   long n,                /* length of each array (all have to be the same) */
+			   int m,                 /* number of arrays to dump */
+			   ...);                  /* the arrays */
+
 
 #endif /* CSPL_Array_H */
 

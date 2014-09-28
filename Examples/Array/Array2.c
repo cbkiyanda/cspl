@@ -11,6 +11,7 @@ int main(void) {
   double dat1[5] = {1, 2, 5, 7, 8};
   double dat2[5] = {2, 3, 4, 6, 5};
   long i;
+  const char* filename = "test_dump.csv";
 
   printf("\nArray1\tArray2\n");
   for (i=0;i<5;i++) {
@@ -28,6 +29,10 @@ int main(void) {
   for (i=0;i<5;i++)
     printf("%lf\n",dat2[i]);
 
+  
+  printf("\nDumping Array1 and Array2 into a csv file named %s\n", filename);
+
+  CSPL_Array_filedump1d(filename, 5, 2, dat1, dat2);
 
   return(0);
 }

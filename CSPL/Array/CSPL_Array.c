@@ -1,4 +1,8 @@
 
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "CSPL_Array.h"
 
 void CSPL_Array_clip(double *inval,  /* input array to clip  */
@@ -41,5 +45,59 @@ double CSPL_Array_range(double *inval, /* input array */
   max = CSPL_Array_max(inval, n);
   return (max-min);
 }
+
+void CSPL_Array_filedump1d(const char *filename, long n, int m, ...) {
+  FILE *fp;
+  int i; // index over number of arrays
+  long j; // index over element in array
+  va_list ar;
+  double **arrs; // these are the arrays we are dumping
+
+  if ((fp = fopen(filename, "w")) == NULL)
+    exit(-1);
+
+  arrs = (double **)calloc(n, sizeof(double));
+  // there is already memory for these allocated outside and passed in
+  //for (i=0;i<m;i++) {
+  //  arrs[i] = (double *)calloc(m, sizeof(double));
+  //}
+
+  /* this handles the variadic function part, this is a bit confusing if one has */
+  /* not done it bfore so is worth some explanation */
+  /* the ... in the definition makes this a variadic function, the int m is the */
+  /* number of arguments */
+  /* and has to be right before the ... arguments (printf does this as a wrpper where */
+  /* the % are counted and passed in as m)  */
+  /* the the va_start says grab the args and call them ar, there are m of them */
+  /* the the va_arg actually grabs the data for type double* and names it ar */
+  /* then it can be used just as a normal pointer */
+  /* then the va_end says we are done and cleans up */
+
+  va_start(ar, m);
+  // loop over the inut arrays and assign each pointer the the right spot in
+  // the 2d array
+  for (i=0;i<m;i++) {
+    arrs[i] = va_arg(ar, double*);
+  }
+  va_end(ar);
+
+  // now loop over the 3d array and dump it out
+  for (j=0;j<n;j++) {
+    for (i=0;i<m;i++) {
+      fprintf(fp, "%.6e\t",arrs[i][j]);
+    }
+    fprintf(fp, "\n");
+  }
+  
+  fclose(fp);
+
+  // free up the memory we allocated
+  // for (i=0;i<m;i++) {
+  //   free(arrs[i]);
+  // }
+  free(arrs);
+}
+
+
 
 
