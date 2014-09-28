@@ -1,6 +1,6 @@
 
 // gcc -I../../CSPL/Array -L../../ Array1.c -lm -Wall -lCSPL -o Array1
-// install_name_tool -add_rpath /Users/blarsen/git/cspl Array1
+// install_name_tool -add_rpath ../../ Array1
 
 
 #include <stdio.h>

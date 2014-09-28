@@ -1,5 +1,7 @@
 
-// gcc -I../../CSPL/Stats -L../../ descriptive.c -lCSPL -o descriptive
+// gcc -I../../CSPL/Stats -L../../ descriptive.c -lm -Wall -lCSPL -o descriptive
+// install_name_tool -add_rpath ../../ descriptive
+
 
 #include <stdio.h>
 
@@ -15,14 +17,17 @@ int main(void) {
     printf("dat1[%ld]=%lf\n", i, dat1[i]);
   printf("\n");
   for (i=0;i<6;i++) 
-    printf("dat2[%ld]=%lf\n", i, dat1[i]);
+    printf("dat2[%ld]=%lf\n", i, dat2[i]);
+  printf("\n");
   
-  printf("mean1: %lf\n", CSPL_mean(dat1, 5));
-  printf("mean2: %lf\n", CSPL_mean(dat2, 6));
+  printf("mean1: %lf\n", CSPL_Stats_mean(dat1, 5));
+  printf("mean2: %lf\n", CSPL_Stats_mean(dat2, 6));
 
-  printf("median1: %lf\n", CSPL_median(dat1, 5));
-  printf("median2: %lf\n", CSPL_median(dat2, 6));
+  printf("median1: %lf\n", CSPL_Stats_median(dat1, 5));
+  printf("median2: %lf\n", CSPL_Stats_median(dat2, 6));
 
+  printf("geo mean1: %lf\n", CSPL_Stats_geometric_mean(dat1, 5));
+  printf("geo mean2: %lf\n", CSPL_Stats_geometric_mean(dat2, 6));
 
   return(0);
 }
