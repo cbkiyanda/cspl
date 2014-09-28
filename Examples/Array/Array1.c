@@ -9,8 +9,9 @@
 
 int main(void) {
   double dat1[5] = {1, 2, 5, 7, 8};
-  double dat2[5] = {2, 3, 4, 5, 6};
+  double dat2[5] = {2, 3, 4, 6, 5};
   double dtmp[5];
+  double v1,v2;
   long i;
 
   printf("\nArray1\tArray2\n");
@@ -18,6 +19,19 @@ int main(void) {
     printf("%lf\t", dat1[i]);
     printf("%lf\n", dat2[i]);
   }
+
+  
+  printf("Min\n");
+  v1 = CSPL_Array_min(dat1, 5);
+  v2 = CSPL_Array_min(dat2, 5);
+  printf("%lf\t%lf\n", v1, v2);
+
+  printf("Max\n");
+  v1 = CSPL_Array_max(dat1, 5);
+  v2 = CSPL_Array_max(dat2, 5);
+  printf("%lf\t%lf\n", v1, v2);
+
+  
 
   CSPL_Array_add(dat1, dat2, dtmp, 5);
   printf("\nSum is:\n");

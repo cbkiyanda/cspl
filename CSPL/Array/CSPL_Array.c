@@ -12,14 +12,27 @@ void CSPL_Array_clip(double *inval,  /* input array to clip  */
   }
 }
 
-void test1() {
-  int a[4] = {1,2,3,4};
-  int b[4] = {1,2,3,4};
-  int c[4];
-  CSPL_Array_add(a,b,c,4);
-
+double CSPL_Array_min(double *inval, /* input array */
+		      long n) {      /* length of array */
+  long i;
+  double min;
+  min = inval[0];
+  for (i=1;i<n;i++) {
+    min = (inval[i] < min) ? inval[i] : min;
+  }
+  return (min);
 }
 
+double CSPL_Array_max(double *inval, /* input array */
+		      long n) {      /* length of array */
+  long i;
+  double max;
+  max = inval[0];
+  for (i=1;i<n;i++) {
+    max = (inval[i] > max) ? inval[i] : max;
+  }
+  return (max);
+}
 
 
 
