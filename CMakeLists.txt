@@ -9,8 +9,14 @@ project(CSPL)
 add_subdirectory (CSPL)
 add_subdirectory (CSPL/Stats)
 add_subdirectory (CSPL/Sort)
+add_subdirectory (CSPL/Array)
 
-add_library (CSPL $<TARGET_OBJECTS:CSPL_Stats> $<TARGET_OBJECTS:CSPL_Sort>)
+set (CSPL_TARGET_OBJECTS
+    $<TARGET_OBJECTS:CSPL_Stats>
+    $<TARGET_OBJECTS:CSPL_Sort>	
+    $<TARGET_OBJECTS:CSPL_Array>	)
+         
+add_library (CSPL ${CSPL_TARGET_OBJECTS})
 
 find_program(CTYPESGEN_LOCATION ctypesgen.py)
 if(NOT CTYPESGEN_LOCATION)
