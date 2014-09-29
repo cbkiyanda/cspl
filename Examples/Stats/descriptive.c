@@ -8,7 +8,8 @@
 #include "CSPL_Stats.h"
 
 int main(void) {
-  double dat1[5] = {1, 2, 5, 7, 8};
+  //  double dat1[5] = {1, 2, 5, 7, 8};
+  double dat1[5] = {15, 20, 35, 40, 50};
   double dat2[6] = {1, 2, 2, 6, 7, 8};
   long i;
   
@@ -25,8 +26,20 @@ int main(void) {
   printf("median1: %lf\n", CSPL_Stats_median(dat1, 5));
   printf("median2: %lf\n", CSPL_Stats_median(dat2, 6));
 
+  printf("IQR1: %lf\n", CSPL_Stats_IQR(dat1, 5));
+  printf("IQR2: %lf\n", CSPL_Stats_IQR(dat2, 6));
+
   printf("geo mean1: %lf\n", CSPL_Stats_geometric_mean(dat1, 5));
   printf("geo mean2: %lf\n", CSPL_Stats_geometric_mean(dat2, 6));
+
+  printf("variance1: %lf\n", CSPL_Stats_variance(dat1, 5));
+  printf("variance2: %lf\n", CSPL_Stats_variance(dat2, 6));
+
+  printf("std: %lf\n", CSPL_Stats_std(dat1, 5));
+  printf("std: %lf\n", CSPL_Stats_std(dat2, 6));
+
+  printf("40th percentile: %lf\n", CSPL_Stats_percentile(dat1, 40., 5));
+  printf("40th percentile: %lf\n", CSPL_Stats_percentile(dat2, 40., 6));
 
   return(0);
 }
