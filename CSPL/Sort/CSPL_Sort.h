@@ -8,6 +8,13 @@
 int CSPL_Sort_comparedoubles(const void *a,  /* (input) first double  */
 			     const void *b); /* (input) second double */
 
+/*
+ * Given a double array return an array of the indices in order to sort
+ * the array
+ */
+void CSPL_Sort_argsort(double *inval, /* (input) array to sort */
+		       long *outval,  /* (output) array of indicies */
+		       long n);       /* (input) length of the arrays */
 
 #endif /* CSPL_Sort_H */
 
