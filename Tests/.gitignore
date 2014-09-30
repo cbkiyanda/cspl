@@ -34,3 +34,4 @@ Stats
 Stats.c
 Array.c
 Array
+!Makefile
