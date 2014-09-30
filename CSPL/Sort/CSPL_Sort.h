@@ -1,6 +1,5 @@
 #ifndef CSPL_Sort_H
 #define CSPL_Sort_H
- 
 
 /* Function to compare doubles, it is meant to be a stable comparisona also */
 /* from stdlib example docs */
@@ -15,6 +14,17 @@ int CSPL_Sort_comparedoubles(const void *a,  /* (input) first double  */
 void CSPL_Sort_argsort(double *inval, /* (input) array to sort */
 		       long *outval,  /* (output) array of indicies */
 		       long n);       /* (input) length of the arrays */
+
+/*
+ * Implementation of Gnome sort, not one to actually use but interesting as a toy
+ * http://xlinux.nist.gov/dads/HTML/gnomeSort.html
+ * http://www.dickgrune.com/Programs/gnomesort.html
+ * http://en.wikipedia.org/wiki/Gnome_sort algorithm
+ *
+ * return the number of swaps performed
+ */
+long CSPL_Sort_gnomesort(double *inval, /* array to be sorted in place */
+			 long n);       /* length of array */
 
 #endif /* CSPL_Sort_H */
 
