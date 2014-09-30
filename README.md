@@ -11,3 +11,7 @@ C library for general purpose computing
 Python wrappers for the library
 
 
+
+[![Project Stats](https://www.openhub.net/p/cspl/widgets/project_thin_badge.gif)](https://www.openhub.net/p/cspl)
+
+
