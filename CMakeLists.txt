@@ -6,6 +6,11 @@ endif()
 
 project(CSPL)
 
+include( FindDoxygen )
+if( DOXYGEN_FOUND )
+  add_custom_target( doc ${DOXYGEN_EXECUTABLE} )
+endif()
+
 add_subdirectory (CSPL)
 add_subdirectory (CSPL/Stats)
 add_subdirectory (CSPL/Sort)
@@ -26,7 +31,7 @@ if(NOT CTYPESGEN_LOCATION)
   # put code here to build the python
 endif(NOT CTYPESGEN_LOCATION)
 
+enable_testing()
 
-
-
-
+add_executable( size size.c )
+add_test( size-test size )
