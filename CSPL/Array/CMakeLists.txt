@@ -6,5 +6,5 @@ set ( CSPL_Array_Files
 add_library (CSPL_Array OBJECT ${CSPL_Array_Files})
 
 # this is -fPIC
-set_target_properties( CSPL_Sort PROPERTIES POSITION_INDEPENDENT_CODE TRUE )
+set_target_properties( CSPL_Array PROPERTIES POSITION_INDEPENDENT_CODE TRUE )
 
