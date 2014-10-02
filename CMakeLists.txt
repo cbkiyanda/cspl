@@ -6,6 +6,11 @@ endif()
 
 project(CSPL)
 
+include( FindDoxygen )
+if( DOXYGEN_FOUND )
+  add_custom_target( doc ${DOXYGEN_EXECUTABLE} )
+endif()
+
 add_subdirectory (CSPL)
 add_subdirectory (CSPL/Stats)
 add_subdirectory (CSPL/Sort)
