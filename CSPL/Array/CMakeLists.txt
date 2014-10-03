@@ -4,7 +4,7 @@ set ( CSPL_Array_Files
     CSPL_Array.h )
 
 add_library (CSPL_Array OBJECT ${CSPL_Array_Files})
+install( FILES CSPL_Array.h DESTINATION include )
 
 # this is -fPIC
 set_target_properties( CSPL_Array PROPERTIES POSITION_INDEPENDENT_CODE TRUE )
-

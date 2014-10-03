@@ -15,15 +15,20 @@ add_subdirectory (CSPL)
 add_subdirectory (CSPL/Stats)
 add_subdirectory (CSPL/Sort)
 add_subdirectory (CSPL/Array)
-add_subdirectory (CSPL/Special)
+#add_subdirectory (CSPL/Special)
 
 set (CSPL_TARGET_OBJECTS
     $<TARGET_OBJECTS:CSPL_Stats>
     $<TARGET_OBJECTS:CSPL_Sort>	
     $<TARGET_OBJECTS:CSPL_Array>
-    $<TARGET_OBJECTS:CSPL_Special>	)
+    #$<TARGET_OBJECTS:CSPL_Special>
+    )
          
 add_library (CSPL ${CSPL_TARGET_OBJECTS})
+install( TARGETS CSPL
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  )
 
 find_program(CTYPESGEN_LOCATION ctypesgen.py)
 if(NOT CTYPESGEN_LOCATION)
