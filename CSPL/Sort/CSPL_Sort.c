@@ -38,7 +38,7 @@ static int compare_argsort_struct( argsort_struct *a,  argsort_struct *b)
  * the array
  */
 void CSPL_Sort_argsort(double *inval,  /* (input) array to sort */
-		       long *outval,   /* (output) array of indicies */ 
+		       long *outval,   /* (output) array of indices */ 
 		       long n) {       /* (input) length of the arrays */
   argsort_struct *vals;
   long i;

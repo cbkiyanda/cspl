@@ -6,7 +6,7 @@
 
 
 /*
- * function to return the normal distrubition CDF
+ * function to return the normal distribution CDF
  * given X, the mean, and stddev (sqrt(variance))
  * this is just the function, one can write another function to return an array
  */
@@ -18,7 +18,7 @@ double CSPL_Stats_Normal_CDFfn(double x,         // (input) position for the CDF
 }
 
 /*
- * function to return the normal distrubition quantile as used in testing
+ * function to return the normal distribution quantile as used in testing
  * given F, the mean, and stddev (sqrt(variance))
  * this is just the function, one can write another function to return an array
  */

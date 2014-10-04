@@ -42,7 +42,7 @@ double CSPL_Stats_IQR(double *inval,     // (input) input array
 double CSPL_Stats_FDrule(double *inval,     // (input) input array 
 			 long n);           // (input) length of array
 
-/* compute the percent rank of each measuremnt in an array */
+/* compute the percent rank of each measurement in an array */
 double CSPL_Stats_percent_rank(long n,  // element number (zero based!)
 			       long N); // total number of elements
 

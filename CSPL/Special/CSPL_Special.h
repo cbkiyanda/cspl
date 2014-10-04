@@ -6,7 +6,7 @@
 #endif
 
 
-/* setup the defualt Erf */
+/* setup the default Erf */
 #ifndef CSPL_Special_Erf
 #define CSPL_Special_Erf CSPL_Special_Erf1
 #endif
@@ -20,7 +20,7 @@
 double CSPL_Special_Erf1(double x); // (input) position to compute the error function
 
 /* 
- * compute the approximation for the invsere Erf
+ * compute the approximation for the inverse Erf
  */
 double CSPL_Special_Erf_inverse1(double x); // (input) position to compute the inverse [-1, 1]
 

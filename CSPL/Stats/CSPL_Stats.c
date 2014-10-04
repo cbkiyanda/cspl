@@ -136,8 +136,8 @@ double CSPL_Stats_percentile(double *inval,     // (input) input array
 }
 
 
-/* compute the percent rank of each measuremnt in an array */
-/* compute the percent rank of each measuremnt in an array */
+/* compute the percent rank of each measurement in an array */
+/* compute the percent rank of each measurement in an array */
 double CSPL_Stats_percent_rank(long n,  // element number (zero based!)
 			       long N) {// total number of elements  // the percent rank is only a function of the number of elements and count
   // the +0.5 is there because we are doing this zero based on the input, 

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 /* checkmk macro for comparing floats are within a tolerance */
-/*  don't forget that the () aroound the args is required if */
+/*  don't forget that the () around the args is required if */
 /*  the args and just numbers or single calls */ 
 #define float_test(v1, v2, tol) fabs( (v1) - (v2) )  < (tol)
  

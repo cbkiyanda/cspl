@@ -1,11 +1,11 @@
 #ifndef CSPL_Stats_CDF_H
 #define CSPL_Stats_CDF_H
  
-/* compute the CDF from tabulted data, weights are 1
- *  A random sample of size n from the distrubtion the CDF can be 
+/* compute the CDF from tabulated data, weights are 1
+ *  A random sample of size n from the distribution the CDF can be 
  *  estimated empirically from a tabulated data where CDF_n(x) is the
  *  number of observations less than or equal to x divided by n. 
- *  reperated values all have the same CDF value and that value
+ *  repeated values all have the same CDF value and that value
  *  is the upper (not averaged) probability.
  */
 void CSPL_Stats_tCDF(double *datain, /* (input) input array */

@@ -27,7 +27,7 @@ double CSPL_Special_Erf1(double x) { // (input) position to compute the error fu
 }
 
 /* 
- * compute the approximation for the invser Erf
+ * compute the approximation for the inverse Erf
  */
 double CSPL_Special_Erf_inverse1(double x) { // (input) position to compute the inverse [-1, 1]
   // this is probably slow, lots of logs etc

@@ -14,7 +14,7 @@ int main(void) {
   long i;
   double ans;
   // these are taken from scipy.stats.norm
-  // shold be independently checked
+  // should be independently checked
   double nCDF_ans[7] = {0.001349898 ,  0.022750132,  
 			0.15865525,  0.5       ,  
 			0.84134475,  0.97724987,  

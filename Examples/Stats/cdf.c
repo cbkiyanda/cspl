@@ -20,7 +20,7 @@ int main(void) {
   long i;
   char tmps[256];
 
-  printf("1) read in some data of google stock prices (goog.csv)\n");
+  printf("1) read in some data of Google stock prices (goog.csv)\n");
   printf("2) Compute the CDF\n");
   printf("3) Compute the 67th and 99th confidence bands\n");
   printf("4) Dump out to text file (goog_cdf.csv)\n");

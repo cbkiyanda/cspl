@@ -55,7 +55,7 @@ double CSPL_Array_range(double *inval, /* (input) input array */
 /* Function to clip an array of doubles to an upper and lower bound */
 /* If each element is outside the clip it is replaced with the clip value */
 /* replaces the input array with the clipped version */
-void CSPL_Array_clip(double *inval,  /* (inplace) input array to clip  */
+void CSPL_Array_clip(double *inval,  /* (in-place) input array to clip  */
 		     double min,     /* (input) min value to clip to */
 		     double max,     /* (input) max value to clip to */
 		     long n);        /* (input) length of the array */

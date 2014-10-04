@@ -67,10 +67,10 @@ void CSPL_Array_filedump1d(const char *filename, long n, int m, ...) {
   //}
 
   /* this handles the variadic function part, this is a bit confusing if one has */
-  /* not done it bfore so is worth some explanation */
+  /* not done it before so is worth some explanation */
   /* the ... in the definition makes this a variadic function, the int m is the */
   /* number of arguments */
-  /* and has to be right before the ... arguments (printf does this as a wrpper where */
+  /* and has to be right before the ... arguments (printf does this as a wrapper where */
   /* the % are counted and passed in as m)  */
   /* the the va_start says grab the args and call them ar, there are m of them */
   /* the the va_arg actually grabs the data for type double* and names it ar */
@@ -78,7 +78,7 @@ void CSPL_Array_filedump1d(const char *filename, long n, int m, ...) {
   /* then the va_end says we are done and cleans up */
 
   va_start(ar, m);
-  // loop over the inut arrays and assign each pointer the the right spot in
+  // loop over the input arrays and assign each pointer the the right spot in
   // the 2d array
   for (i=0;i<m;i++) {
     arrs[i] = va_arg(ar, double*);
