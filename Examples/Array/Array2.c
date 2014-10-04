@@ -1,5 +1,5 @@
 
-// gcc -I../../CSPL/Array -L../../ Array2.c -lm -Wall -lCSPL -o Array2
+// gcc -I../../CSPL/Array -L../../ Array2.c -lm -Wall -lCSPL -o Array2 -O3
 // install_name_tool -add_rpath ../../ Array2
 
 
