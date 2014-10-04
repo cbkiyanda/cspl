@@ -36,7 +36,9 @@ if(NOT CTYPESGEN_LOCATION)
   # put code here to build the python
 endif(NOT CTYPESGEN_LOCATION)
 
-enable_testing()
-
-add_executable( size size.c )
-add_test( size-test size )
+if(BUILD_TESTS)
+       enable_testing()
+       add_subdirectory (Tests)
+       add_executable( size size.c )
+       add_test( size-test size )
+endif(BUILD_TESTS)
