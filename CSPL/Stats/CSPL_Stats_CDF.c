@@ -6,6 +6,7 @@
 #include "CSPL_Stats_CDF.h"
 #include "../Sort/CSPL_Sort.h"
 #include "../Array/CSPL_Array.h"
+#include "../Special/CSPL_Special.h"
 
 /*   Compute the Cumulative distribution function from a tabular 
  *   set of data, the CDF is then defined as the percent of measurements
@@ -65,9 +66,6 @@ void CSPL_Stats_tCDF(double *datain,
 
   free(incopy);  
 }
-
-
-
 
 
 
