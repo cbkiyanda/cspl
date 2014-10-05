@@ -41,6 +41,48 @@ double CSPL_Stats_median(double *inval, long n) {
   return(median);
 }
 
+/* Compute the standard deviation of an array */
+double CSPL_Stats_skew(double *inval,    // (input) input array 
+		       long n) {         // (input) length of array
+  double mean;
+  double numerator=0.0;
+  double demoninator=0.0;
+  long i;
+  mean = CSPL_Stats_mean(inval, n);
+  for (i=0;i<n;i++) {
+    numerator += ( (inval[i] - mean)*(inval[i] - mean)*(inval[i] - mean) );
+  }
+  numerator /= (double)n;
+  for (i=0;i<n;i++) {
+    demoninator += ( (inval[i] - mean)*(inval[i] - mean) );
+  }
+  demoninator /= (double)(n-1);
+  demoninator = pow(demoninator, (3.0/2.0));
+
+  return (numerator/demoninator);
+}
+
+/* Compute the kurtosis of an array */
+double CSPL_Stats_kurtosis(double *inval,    // (input) input array 
+			   long n) {         // (input) length of array
+  double mean;
+  double numerator=0.0;
+  double demoninator=0.0;
+  long i;
+  mean = CSPL_Stats_mean(inval, n);
+  for (i=0;i<n;i++) {
+    numerator += ( (inval[i] - mean)*(inval[i] - mean)*(inval[i] - mean)*(inval[i] - mean) );
+  }
+  numerator /= (double)n;
+  for (i=0;i<n;i++) {
+    demoninator += ( (inval[i] - mean)*(inval[i] - mean) );
+  }
+  demoninator /= (double)(n);
+  demoninator *= demoninator;
+
+  return( (numerator/demoninator) - 3 );
+}
+
 double CSPL_Stats_geometric_mean(double *inval, long n) {
   long i;
   double *incopy; // do this so that the input array is not changed

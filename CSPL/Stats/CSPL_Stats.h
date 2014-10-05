@@ -22,8 +22,16 @@ double CSPL_Stats_variance(double *inval,    // (input) input array
 			   long n);                // (input) length of array
 
 /* Compute the standard deviation of an array */
-double CSPL_Stats_std(double *inval,    // (input) input array 
-		      long n);          // (input) length of array
+double CSPL_Stats_std(double *inval,      // (input) input array 
+		      long n);            // (input) length of array
+
+/* Compute the skewness of an array */
+double CSPL_Stats_skew(double *inval,     // (input) input array 
+		       long n);           // (input) length of array
+
+/* Compute the kurtosis of an array */
+double CSPL_Stats_kurtosis(double *inval, // (input) input array 
+			   long n);       // (input) length of array
 
 /* Compute the given percentile of an array using linear interpolation between values*/
 /* Title: Sample Quantiles in Statistical Packages */

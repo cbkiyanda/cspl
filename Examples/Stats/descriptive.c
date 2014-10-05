@@ -41,6 +41,12 @@ int main(void) {
   printf("40th percentile: %lf\n", CSPL_Stats_percentile(dat1, 40., 5));
   printf("40th percentile: %lf\n", CSPL_Stats_percentile(dat2, 40., 6));
 
+  printf("Skewness: %lf\n", CSPL_Stats_skew(dat1, 5)); // 1.54891856583 
+  printf("Skewness: %lf\n", CSPL_Stats_skew(dat2, 6)); // 1.23140138408
+
+  printf("Kurtosis: %lf\n", CSPL_Stats_kurtosis(dat1, 5)); // 1.54891856583 
+  printf("Kurtosis: %lf\n", CSPL_Stats_kurtosis(dat2, 6)); // 1.23140138408
+
   return(0);
 }
 
