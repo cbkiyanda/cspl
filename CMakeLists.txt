@@ -30,11 +30,11 @@ install( TARGETS CSPL
   LIBRARY DESTINATION lib
   )
 
-find_program(CTYPESGEN_LOCATION ctypesgen.py)
-if(NOT CTYPESGEN_LOCATION)
+find_program(CTYPESGEN_FOUND ctypesgen.py)
+if(NOT CTYPESGEN_FOUND)
   message(WARNING "Could not find ctypesgen.py command, python cannot be build")
   # put code here to build the python
-endif(NOT CTYPESGEN_LOCATION)
+endif(NOT CTYPESGEN_FOUND)
 
 if(BUILD_TESTS)
        enable_testing()
