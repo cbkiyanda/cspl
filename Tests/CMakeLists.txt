@@ -8,3 +8,6 @@ add_executable( Test_Stats Test_Stats.c )
 add_test( Test_Stats-test Test_Stats )
 target_link_libraries (Test_Stats LINK_PUBLIC CSPL)
 
+add_executable( Test_Array Test_Array.c )
+add_test( Array-test Test_Array )
+target_link_libraries (Test_Array LINK_PUBLIC CSPL)
