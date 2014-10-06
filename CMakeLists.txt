@@ -42,3 +42,11 @@ if(BUILD_TESTS)
        add_executable( size size.c )
        add_test( size-test size )
 endif(BUILD_TESTS)
+
+if(BUILD_EXAMPLES)
+       add_subdirectory(Examples)
+endif(BUILD_EXAMPLES)
+
+
+
+
