@@ -14,9 +14,7 @@ int main(void) {
     CSPL_Array_add(d1, d2, out, 5);
     for (i=0;i<5;i++) {
       printf("CSPL_Array_add[%ld]=%lf  %lf\n", i, out[i], answer[i]);
-      if ( float_test(out[i], answer[i], 1e-5) == 0) {
-	return (1);
-      }
+      assert_float_test(out[i], answer[i], 1e-5);
     }
 
   }
@@ -29,9 +27,7 @@ int main(void) {
     CSPL_Array_subtract(d1, d2, out, 5);
     for (i=0;i<5;i++) {
       printf("CSPL_Array_subtract[%ld]=%lf  %lf\n", i, out[i], answer[i]);
-      if( float_test(out[i], answer[i], 1e-5) == 0) {
-	return(1);
-      }
+      assert_float_test(out[i], answer[i], 1e-5);
     }
   }
   {
@@ -43,9 +39,7 @@ int main(void) {
     CSPL_Array_multiply(d1, d2, out, 5);
     for (i=0;i<5;i++) {
       printf("CSPL_Array_multiply[%ld]=%lf  %lf\n", i, out[i], answer[i]);
-      if( float_test(out[i], answer[i], 1e-5) == 0) {
-	return(1);
-      }
+      assert_float_test(out[i], answer[i], 1e-5);
     }
   }
   {
@@ -57,9 +51,7 @@ int main(void) {
     CSPL_Array_divide(d1, d2, out, 5);
     for (i=0;i<5;i++) {
       printf("CSPL_Array_divide[%ld]=%lf  %lf\n", i, out[i], answer[i]);
-      if( float_test(out[i], answer[i], 1e-5)==0) {
-	return(1);
-      }
+      assert_float_test(out[i], answer[i], 1e-5);
     }
   }
   {
@@ -67,27 +59,22 @@ int main(void) {
     double answer = 2.0;
     double out;	     
     out = CSPL_Array_min(d1, 5);
-    if( float_test(out, answer, 1e-5)==0) {
-      return(1);
-    }
+    assert_float_test(out, answer, 1e-5);
   }
   {
     double d1[5] = {2,   3.4, 5.6, 4.5, 3.1};
     double answer = 5.6;
     double out;	     
     out = CSPL_Array_max(d1, 5);
-    if( float_test(out, answer, 1e-5)==0) {
-      return(1);
-    }
+    assert_float_test(out, answer, 1e-5);
   }
   {
     double d1[5] = {2,   3.4, 5.6, 4.5, 3.1};
     double answer = 3.6;
     double out;	     
     out = CSPL_Array_range(d1, 5);
-    if( float_test(out, answer, 1e-5)==0) {
-      return(1);
-    }
+    printf("CSPL_Array_range: %lf, %lf\n", out, answer);
+    assert_float_test(out, answer, 1e-5);
   }
   {
     double d1[5] = {2,   3.4, 5.6, 4.5, 3.1};
@@ -99,22 +86,22 @@ int main(void) {
     CSPL_Array_clip(d1, 0, 10, 5);
     for (i=0;i<5;i++) {
       printf("CSPL_Array_clip[%ld]=%lf  %lf\n", i, d1[i], answer1[i]);
-      if( float_test(d1[i], answer1[i], 1e-5)==0) return(1);
+      assert_float_test(d1[i], answer1[i], 1e-5);
     }
     CSPL_Array_clip(d1, 3, 10, 5);
     for (i=0;i<5;i++) {
       printf("CSPL_Array_clip[%ld]=%lf  %lf\n", i, d1[i], answer2[i]);
-      if( float_test(d1[i], answer2[i], 1e-5)==0) return(1);
+      assert_float_test(d1[i], answer2[i], 1e-5);
     }
     CSPL_Array_clip(d1, 3, 5.5, 5);
     for (i=0;i<5;i++) {
       printf("CSPL_Array_clip[%ld]=%lf  %lf\n", i, d1[i], answer3[i]);
-      if( float_test(d1[i], answer3[i], 1e-5)==0) return(1);
+      assert_float_test(d1[i], answer3[i], 1e-5);
     }
     CSPL_Array_clip(d1, -10, -4, 5);
     for (i=0;i<5;i++) {
       printf("CSPL_Array_clip[%ld]=%lf  %lf\n", i, d1[i], answer4[i]);
-      if( float_test(d1[i], answer4[i], 1e-5)==0) return(1);
+      assert_float_test(d1[i], answer4[i], 1e-5);
     }  
   }
   

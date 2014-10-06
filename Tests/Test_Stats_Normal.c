@@ -27,20 +27,16 @@ int main(void) {
 
   for (i=0;i<7;i++) {
     ans = CSPL_Stats_Normal_CDFfn(nCDF_ins[i], 0.0, 1.0);
-    if (float_test(ans, nCDF_ans[i], 1e-4) == 0 ) {
-      printf("CSPL_Stats_Normal_CDFfn(%lf) %lf != %lf\n", 
-	     nCDF_ins[i], ans, nCDF_ans[i]);
-      return(1);
-    } 
+    printf("CSPL_Stats_Normal_CDFfn(%lf) %lf != %lf\n", 
+	   nCDF_ins[i], ans, nCDF_ans[i]);
+    assert_float_test(ans, nCDF_ans[i], 1e-4);
   }
 
   for (i=0;i<1;i++) {
     ans = CSPL_Stats_Normal_Quantilefn(Quantile_ins[i], 0.0, 1.0);
-    if (float_test(ans, Quantile_ans[i], 1e-2) == 0 ) {
-      printf("CSPL_Stats_Normal_Quantilefn(%lf) %lf != %lf\n", 
-	     Quantile_ins[i], ans, Quantile_ans[i]);
-      return(1);
-    } 
+    printf("CSPL_Stats_Normal_Quantilefn(%lf) %lf != %lf\n", 
+	   Quantile_ins[i], ans, Quantile_ans[i]);
+    assert_float_test(ans, Quantile_ans[i], 1e-2);
   }
   
   return(0);

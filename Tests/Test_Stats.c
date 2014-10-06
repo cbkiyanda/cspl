@@ -23,46 +23,32 @@ int main(void) {
   double geo_ans      = 23.449640;
 
   ans = CSPL_Stats_skew(data1, 11);
-  if (float_test(ans, skew_ans, 1e-4) == 0) {
-    printf("CSPL_Stats_skew=%lf, %lf\n", ans, skew_ans);
-    return(1);
-  }
+  printf("CSPL_Stats_skew=%lf, %lf\n", ans, skew_ans);
+  assert_float_test(ans, skew_ans, 1e-4);
 
   ans = CSPL_Stats_kurtosis(data1, 11);
-  if (float_test(ans, kurt_ans, 1e-4) == 0) {
-    printf("CSPL_Stats_kurtosis=%lf, %lf\n", ans, kurt_ans);
-    return(1);
-  }
-
+  printf("CSPL_Stats_kurtosis=%lf, %lf\n", ans, kurt_ans);
+  assert_float_test(ans, kurt_ans, 1e-4);
+ 
   ans = CSPL_Stats_mean(data1, 11);
-  if (float_test(ans, mean_ans, 1e-4) == 0) {
-    printf("CSPL_Stats_mean=%lf, %lf\n", ans, mean_ans);
-    return(1);
-  }
+  printf("CSPL_Stats_mean=%lf, %lf\n", ans, mean_ans);
+  assert_float_test(ans, mean_ans, 1e-4);
 
   ans = CSPL_Stats_median(data1, 11);
-  if (float_test(ans, median_ans, 1e-4) == 0) {
-    printf("CSPL_Stats_median=%lf, %lf\n", ans, median_ans);
-    return(1);
-  }
+  printf("CSPL_Stats_median=%lf, %lf\n", ans, median_ans);
+  assert_float_test(ans, median_ans, 1e-4);
 
   ans = CSPL_Stats_std(data1, 11);
-  if (float_test(ans, std_ans, 1e-4) == 0) {
-    printf("CSPL_Stats_std=%lf, %lf\n", ans, std_ans);
-    return(1);
-  }
+  printf("CSPL_Stats_std=%lf, %lf\n", ans, std_ans);
+  assert_float_test(ans, std_ans, 1e-4);
 
   ans = CSPL_Stats_variance(data1, 11);
-  if (float_test(ans, variance_ans, 1e-4) == 0) {
-    printf("CSPL_Stats_variance=%lf, %lf\n", ans, variance_ans);
-    return(1);
-  }
+  printf("CSPL_Stats_variance=%lf, %lf\n", ans, variance_ans);
+  assert_float_test(ans, variance_ans, 1e-4);
 
   ans = CSPL_Stats_geometric_mean(data1, 11);
-  if (float_test(ans, geo_ans, 1e-4) == 0) {
-    printf("CSPL_Stats_geometric_mean=%lf, %lf\n", ans, geo_ans);
-    return(1);
-  }
+  printf("CSPL_Stats_geometric_mean=%lf, %lf\n", ans, geo_ans);
+  assert_float_test(ans, geo_ans, 1e-4);
 
   {
     double data[5] = {2,3.4, 5.6, 4.5, 3.1};
@@ -71,7 +57,7 @@ int main(void) {
     long i;
     CSPL_Stats_tCDF(data, outval, 5);
     for (i=0;i<5;i++) {
-      if( float_test(outval[i], answer[i], 1e-5)==0) return(1);
+      assert_float_test(outval[i], answer[i], 1e-5);
     }
   }
   {
@@ -86,25 +72,25 @@ int main(void) {
     // printf("%lf\t%lf\n", outval1[i], outval2[i]);
     } */
     for (i=0;i<5;i++) {
-      if( float_test(outval1[i], answer1[i], 1e-5)==0)return(1);
-      if( float_test(outval2[i], answer2[i], 1e-5)==0)return(1);
+      assert_float_test(outval1[i], answer1[i], 1e-5);
+      assert_float_test(outval2[i], answer2[i], 1e-5);
     }	  
   }
   {
     double data[5] =  {0.2, 0.4, 0.6, 0.8, 1.0};
     printf("CSPL_Stats_percentile %lf\n", CSPL_Stats_percentile(data, 20, 5));
-    if( float_test(CSPL_Stats_percentile(data, 20, 5), 0.300000, 1e-5) ==0)return(1);
+    assert_float_test(CSPL_Stats_percentile(data, 20, 5), 0.300000, 1e-5);
     printf("CSPL_Stats_percentile %lf\n", CSPL_Stats_percentile(data, 25, 5));
-    if( float_test(CSPL_Stats_percentile(data, 25, 5), 0.350000, 1e-5) ==0)return(1);
+    assert_float_test(CSPL_Stats_percentile(data, 25, 5), 0.350000, 1e-5);
     printf("CSPL_Stats_percentile %lf\n", CSPL_Stats_percentile(data, 40, 5));
-    if( float_test(CSPL_Stats_percentile(data, 40, 5), 0.500000, 1e-5) ==0)return(1);
+    assert_float_test(CSPL_Stats_percentile(data, 40, 5), 0.500000, 1e-5);
     printf("CSPL_Stats_percentile %lf\n", CSPL_Stats_percentile(data, 50, 5));
-    if( float_test(CSPL_Stats_percentile(data, 50, 5), 0.600000, 1e-5) ==0)return(1);
+    assert_float_test(CSPL_Stats_percentile(data, 50, 5), 0.600000, 1e-5);
     printf("CSPL_Stats_percentile %lf\n", CSPL_Stats_percentile(data, 60, 5));
-    if( float_test(CSPL_Stats_percentile(data, 60, 5), 0.700000, 1e-5) ==0)return(1);
+    assert_float_test(CSPL_Stats_percentile(data, 60, 5), 0.700000, 1e-5);
     printf("CSPL_Stats_percentile %lf\n", CSPL_Stats_percentile(data, 82, 5));
-    if( float_test(CSPL_Stats_percentile(data, 82, 5), 0.920000, 1e-5) ==0)return(1);
-    if( float_test(CSPL_Stats_percentile(data, 50, 5), CSPL_Stats_median(data, 5) , 1e-5) ==0)return(1);
+    assert_float_test(CSPL_Stats_percentile(data, 82, 5), 0.920000, 1e-5);
+    assert_float_test(CSPL_Stats_percentile(data, 50, 5), CSPL_Stats_median(data, 5) , 1e-5);
   }
   {
     long N=11;
@@ -114,14 +100,9 @@ int main(void) {
 			 95.454545};
     for (n=0;n<N;n++) {
       printf("CSPL_Stats_percent_rank %ld, %ld, %lf\n", n, N, CSPL_Stats_percent_rank(n, N));
-      if( float_test(CSPL_Stats_percent_rank(n, N), answer[n] , 1e-5)==0 )return(1);
+      assert_float_test(CSPL_Stats_percent_rank(n, N), answer[n] , 1e-5);
     }	
   }
-
-
-
-  
-
 
   return(0);
 }
