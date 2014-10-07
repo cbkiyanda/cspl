@@ -1,3 +1,7 @@
+/** @file
+ *
+ * Array implementations.
+ */
 
 #include <errno.h>
 #include <stdarg.h>
@@ -7,10 +11,25 @@
 
 #include "CSPL_Array.h"
 
+/** Clip the elements of an array to within a range (in place, i.e. this
+ * function modifies the input array).
+ *
+ * @f$ A_{i} \leftarrow
+ * \left\{ \begin{array}{ll}
+ * A_{min} & A_{i} <= A_{min} \\
+ * A_{max} & A_{i} >= A_{max} \\
+ * A_{i}   & \mbox{otherwise}
+ * \end{array} \right. @f$
+ *
+ * @param [inout] inval The input array.
+ * @param [in] min @f$ A_{min} @f$.
+ * @param [in] max @f$ A_{max} @f$.
+ * @param [in] n The number of elements in the array.
+ */
 void CSPL_Array_clip(double *inval,  /* input array to clip  */
-		     double min,     /* min value to clip to */
-		     double max,     /* max value to clip to */
-		     long n) {        /* length of the array */
+		     const double min,     /* min value to clip to */
+		     const double max,     /* max value to clip to */
+		     const long n) {        /* length of the array */
   long i;
   for (i=0;i<n;i++) {
     inval[i] = (inval[i] < min) ? min : inval[i];
