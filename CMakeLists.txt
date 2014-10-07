@@ -30,23 +30,34 @@ install( TARGETS CSPL
   LIBRARY DESTINATION lib
   )
 
+find_library( LIBM m )
+if( LIBM )
+  target_link_libraries( CSPL ${LIBM} )
+endif()
+
 find_program(CTYPESGEN_FOUND ctypesgen.py)
 if(NOT CTYPESGEN_FOUND)
   message(WARNING "Could not find ctypesgen.py command, python cannot be build")
   # put code here to build the python
 endif(NOT CTYPESGEN_FOUND)
 
+if( NOT BUILD_TESTS )
+  set( BUILD_TESTS False
+    CACHE BOOL "Whether to build the tests" )
+endif()
+
 if(BUILD_TESTS)
-       enable_testing()
-       add_subdirectory (Tests)
-       add_executable( size size.c )
-       add_test( size-test size )
+  enable_testing()
+  add_subdirectory (Tests)
+  add_executable( size size.c )
+  add_test( size-test size )
 endif(BUILD_TESTS)
 
+if( NOT BUILD_EXAMPLES )
+  set( BUILD_EXAMPLES FALSE
+    CACHE BOOL "Whether to build the examples" )
+endif()
+
 if(BUILD_EXAMPLES)
-       add_subdirectory(Examples)
+  add_subdirectory(Examples)
 endif(BUILD_EXAMPLES)
-
-
-
-
