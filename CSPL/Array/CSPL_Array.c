@@ -37,8 +37,15 @@ void CSPL_Array_clip(double *inval,  /* input array to clip  */
   }
 }
 
-double CSPL_Array_min(double *inval, /* input array */
-		      long n) {      /* length of array */
+/** Return the minimum of an array.
+ *
+ *
+ * @param [in] inval The input array.
+ * @param [in] n The number of elements in the array.
+ * @param [return]  @f$ A_{min} @f$ , The minimum value of the array.
+ */ 
+double CSPL_Array_min(const double *inval, /* input array */
+		      const long n) {      /* length of array */
   long i;
   double min;
   min = inval[0];
@@ -48,8 +55,15 @@ double CSPL_Array_min(double *inval, /* input array */
   return (min);
 }
 
-double CSPL_Array_max(double *inval, /* input array */
-		      long n) {      /* length of array */
+/** Return the maximum of an array.
+ *
+ *
+ * @param [in] inval The input array.
+ * @param [in] n The number of elements in the array.
+ * @param [return]  @f$ A_{max} @f$ , The maximum value of the array.
+ */ 
+double CSPL_Array_max(const double *inval, /* input array */
+		      const long n) {      /* length of array */
   long i;
   double max;
   max = inval[0];
@@ -59,15 +73,32 @@ double CSPL_Array_max(double *inval, /* input array */
   return (max);
 }
 
-double CSPL_Array_range(double *inval, /* input array */
-			long n) {      /* length of array */
+/** Return the range of an array.
+ *
+ *
+ * @param [in] inval The input array.
+ * @param [in] n The number of elements in the array.
+ * @param [return]  @f$ A_{max}A_{min}- @f$ , The range of the array.
+ */ 
+double CSPL_Array_range(const double *inval, /* input array */
+			const long n) {      /* length of array */
   double min, max;
   min = CSPL_Array_min(inval, n);
   max = CSPL_Array_max(inval, n);
   return (max-min);
 }
 
-void CSPL_Array_filedump1d(const char *filename, long n, int m, ...) {
+/** Dump a collection of 1-d arrays to a text file. This is meant to be
+ * a helper routine, likely wrapped elsewhere. All arrays must be the 
+ * same length. 
+ *
+ *
+ * @param [in] filename The filename to create, it is overwritten if it exists.
+ * @param [in] n The number of elements in the array.
+ * @param [in] m The number of arrays that will be passed in.
+ * @param [in] ... the arrays to write out to the file
+ */ 
+void CSPL_Array_filedump1d(const char *filename, const long n, const int m, ...) {
   FILE *fp;
   int i; // index over number of arrays
   long j; // index over element in array
