@@ -106,6 +106,3 @@ void CSPL_Array_filedump1d(const char *filename,  /* (input) filename to output 
 
 
 #endif /* CSPL_Array_H */
-
-
-

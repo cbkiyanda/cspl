@@ -1,3 +1,8 @@
+/** @file
+ *
+ * Header file for CSPL_Sort.
+ */
+
 #ifndef CSPL_Sort_H
 #define CSPL_Sort_H
 
@@ -27,6 +32,3 @@ long CSPL_Sort_gnomesort(double *inval, /* array to be sorted in place */
 			 long n);       /* length of array */
 
 #endif /* CSPL_Sort_H */
-
-
-

@@ -1,14 +1,16 @@
-
 #include <stdlib.h> /* qsort */
 
 #include "CSPL_Sort.h"
 
-
 #define Sort_SWAP(a,b,type) {type tmp=a;a=b;b=tmp;}
 
-
+/** The sort structure.
+ */
 typedef struct argsort_struct { 
+  /** The index. */
   long ind;
+
+  /** The value. */
   double value;
 } argsort_struct;
 

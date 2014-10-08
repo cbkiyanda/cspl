@@ -151,7 +151,3 @@ void CSPL_Array_filedump1d(const char *filename, const long n, const int m, ...)
   // }
   free(arrs);
 }
-
-
-
-
