@@ -1,11 +1,25 @@
+/** @file
+ *
+ * Array implementation header.
+ */
+
 #ifndef CSPL_Array_H
 #define CSPL_Array_H
+
 
 /************************************************
     MACROS
 *************************************************/
 
-/* Perform a+b=c for arrays of a given type, they should all be the same type */
+/**
+ * \def CSPL_Array_add(a, b, c, n)
+ * Macro to add two arrays of the same type element by element. a+b=c for arrays of a given type
+
+ * @param [in] a The first array.
+ * @param [in] b The second array.
+ * @param [inout] c Output array @f$ a+b @f$ must be preallocated.
+ * @param [in] n The number of elements in each array.
+ */
 #define CSPL_Array_add(a, b, c, n)  {		\
          long i;	       			\
          for (i=0;i<n;i++) {	       		\
@@ -13,7 +27,15 @@
          }                                      \
 }
 
-/* Perform a-b=c for arrays of a given type, they should all be the same type */
+/**
+ * \def CSPL_Array_subtract(a, b, c, n)
+ * Macro to subtract two arrays of the same type element by element. a-b=c for arrays of a given type
+
+ * @param [in] a The first array.
+ * @param [in] b The second array.
+ * @param [inout] c Output array @f$ a-b @f$ must be preallocated.
+ * @param [in] n The number of elements in each array.
+ */
 #define CSPL_Array_subtract(a, b, c, n)  {	\
          long i;	       			\
          for (i=0;i<n;i++) {	       		\
@@ -21,7 +43,15 @@
          }                                      \
 }
  
-/* Perform a*b=c for arrays of a given type, they should all be the same type */
+/**
+ * \def CSPL_Array_multiply(a, b, c, n)
+ * Macro to multiply two arrays of the same type element by element. a*b=c for arrays of a given type
+
+ * @param [in] a The first array.
+ * @param [in] b The second array.
+ * @param [inout] c Output array @f$ a*b @f$ must be preallocated.
+ * @param [in] n The number of elements in each array.
+ */
 #define CSPL_Array_multiply(a, b, c, n)  {	\
          long i;	       			\
          for (i=0;i<n;i++) {	       		\
@@ -29,7 +59,15 @@
          }                                      \
 }
 
-/* Perform a/b=c for arrays of a given type, they should all be the same type */
+/**
+ * \def CSPL_Array_divide(a, b, c, n)
+ * Macro to divide two arrays of the same type element by element. a/b=c for arrays of a given type
+
+ * @param [in] a The first array.
+ * @param [in] b The second array.
+ * @param [inout] c Output array @f$ a/b @f$ must be preallocated.
+ * @param [in] n The number of elements in each array.
+ */
 #define CSPL_Array_divide(a, b, c, n)  {	\
          long i;	       			\
          for (i=0;i<n;i++) {	       		\
