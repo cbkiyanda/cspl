@@ -1,3 +1,8 @@
+/** @file
+ *
+ * Statistics to compute and use cumulative probability distributions (CDF).
+ */
+
 #ifndef CSPL_Stats_CDF_H
 #define CSPL_Stats_CDF_H
  
@@ -8,9 +13,9 @@
  *  repeated values all have the same CDF value and that value
  *  is the upper (not averaged) probability.
  */
-void CSPL_Stats_tCDF(double *datain, /* (input) input array */
+void CSPL_Stats_tCDF(const double *datain, /* (input) input array */
 		     double *cdfout, /* (output) output CDF (sorted) */
-		     long n);        /* (input) array length */
+		     const long n);        /* (input) array length */
 
 
 
@@ -20,11 +25,11 @@ void CSPL_Stats_tCDF(double *datain, /* (input) input array */
  * inequality     
  * the conf is the desired confidence, 95% is 0.05, 99% is 0.01   
  */
-void CSPL_Stats_tCDF_confidence_bands(double *cdf,         /* (input) input CDF */
+void CSPL_Stats_tCDF_confidence_bands(const double *cdf,         /* (input) input CDF */
 				      double *lowerband,   /* (output) lower edges of the confidence band */
 				      double *upperband,   /* (output) upper edges of the confidence band */
-				      double conf,         /* (input) confidence interval e.g. 0.01 or 0.05 */
-				      long n );            /* (input) array length */
+				      const double conf,         /* (input) confidence interval e.g. 0.01 or 0.05 */
+				      const long n );            /* (input) array length */
  
 
 

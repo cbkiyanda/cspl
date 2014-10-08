@@ -1,3 +1,7 @@
+/** @file
+ *
+ * Statistics to compute and use cumulative probability distributions (CDF).
+ */
 
 #include <math.h>   
 #include <stdlib.h> /* qsort */
@@ -8,17 +12,23 @@
 #include "../Array/CSPL_Array.h"
 #include "../Special/CSPL_Special.h"
 
-/*   Compute the Cumulative distribution function from a tabular 
+
+/** Compute the Cumulative distribution function from a tabular 
  *   set of data, the CDF is then defined as the percent of measurements
  *   less than X along the data.
+ *
+ *
+ * @param [in] cdf Input CDF to compute the confidence bands.
+ * @param [out] lowerband The lower band values of the confidence.
+ * @param [out] upperband The upper band values of the confidence.
+ * @param [in] conf The confidence value desired for the bands (e.g. 95).
+ * @param [in] n The length of the input and output arrays.
  */
-
-
-void CSPL_Stats_tCDF_confidence_bands(double *cdf,
+void CSPL_Stats_tCDF_confidence_bands(const double *cdf,
 				      double *lowerband,
 				      double *upperband,
-				      double conf, 
-				      long n ) {
+				      const double conf, 
+				      const long n ) {
   /* given a CDF computed from an array compute and return the confidence  */
   /* bands of the CDF, this is done using the Dvoretzky-Kiefer-Wolfowitz (DKW)  */
   /* inequality     */
@@ -35,18 +45,22 @@ void CSPL_Stats_tCDF_confidence_bands(double *cdf,
   CSPL_Array_clip(upperband, 0, 1, n);    
 }
 
-void CSPL_Stats_tCDF(double *datain, 
+
+/**  Compute the CDF from tabulated data, weights are 1
+ * A random sample of size n from the distribution the CDF can be 
+ *  estimated empirically from a tabulated data where CDF_n(x) is the
+ *  number of observations less than or equal to x divided by n. 
+ *  repeated values all have the same CDF value and that value
+ *  is the upper (not averaged) probability.
+ *
+ *
+ * @param [in] datain Input data to compute the CDF from.
+ * @param [out] cdfout The values of the CDF.
+ * @param [in] n The length of the input and output arrays.
+ */
+void CSPL_Stats_tCDF(const double *datain, 
 		     double *cdfout,
-		     long n) {
-  // compute the CDF from tabulated data, weights are 1
-
-  /*  A random sample of size n from the distribution the CDF can be 
-   *  estimated empirically from a tabulated data where CDF_n(x) is the
-   *  number of observations less than or equal to x divided by n. 
-   *  repeated values all have the same CDF value and that value
-   *  is the upper (not averaged) probability.
-   */
-
+		     const long n) {
   long i, count;
   double *incopy; // do this so that the input array is not changed
 

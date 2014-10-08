@@ -42,7 +42,7 @@ void CSPL_Array_clip(double *inval,  /* input array to clip  */
  *
  * @param [in] inval The input array.
  * @param [in] n The number of elements in the array.
- * @param [return]  @f$ A_{min} @f$ , The minimum value of the array.
+ * @return  @f$ A_{min} @f$ , The minimum value of the array.
  */ 
 double CSPL_Array_min(const double *inval, /* input array */
 		      const long n) {      /* length of array */
@@ -60,7 +60,7 @@ double CSPL_Array_min(const double *inval, /* input array */
  *
  * @param [in] inval The input array.
  * @param [in] n The number of elements in the array.
- * @param [return]  @f$ A_{max} @f$ , The maximum value of the array.
+ * @return  @f$ A_{max} @f$ , The maximum value of the array.
  */ 
 double CSPL_Array_max(const double *inval, /* input array */
 		      const long n) {      /* length of array */
@@ -78,7 +78,7 @@ double CSPL_Array_max(const double *inval, /* input array */
  *
  * @param [in] inval The input array.
  * @param [in] n The number of elements in the array.
- * @param [return]  @f$ A_{max}A_{min}- @f$ , The range of the array.
+ * @return  @f$ A_{max}A_{min}- @f$ , The range of the array.
  */ 
 double CSPL_Array_range(const double *inval, /* input array */
 			const long n) {      /* length of array */
