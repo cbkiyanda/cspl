@@ -62,6 +62,10 @@ int main(void) {
   for (i=0;i<5;i++) 
     printf("dat1[%ld]=%lf\n", i, dat1[i]);
 
+  CSPL_Array_logscale(dat2, 1, 10, 5);
+  printf("\nLog Scaled to [1,10] gives:\n");
+  for (i=0;i<5;i++) 
+    printf("dat2[%ld]=%lf\n", i, dat2[i]);
 
   return(0);
 }

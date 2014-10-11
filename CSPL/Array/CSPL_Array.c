@@ -4,6 +4,7 @@
  */
 
 #include <errno.h>
+#include <math.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,7 +38,7 @@ void CSPL_Array_clip(double *inval,  /* input array to clip  */
   }
 }
 
-/** Scale the elements of an array to within a range (in place, i.e. this
+/** Linearly scale the elements of an array to within a range (in place, i.e. this
  * function modifies the input array).
  *
  *
@@ -59,6 +60,25 @@ void CSPL_Array_scale(double *inval,       /* (in-place) input array to scale  *
     inval[i] *= (max-min);
     inval[i] += min;
   }
+}
+
+/** Logarithmically scale the elements of an array to within a range (in place, i.e. this
+ * function modifies the input array).
+ *
+ *
+ * @param [inout] inval The input array.
+ * @param [in] min @f$ A_{min} @f$.
+ * @param [in] max @f$ A_{max} @f$.
+ * @param [in] n The number of elements in the array.
+ */
+void CSPL_Array_logscale(double *inval,       /* (in-place) input array to scale  */
+			 const double min,     /* (input) min value to scale to */
+			 const double max,     /* (input) max value to scale to */
+			 const long n) {      /* (input) length of the array */
+  long i;
+  CSPL_Array_scale(inval, log10(min), log10(max), n);
+  for (i=0;i<n;i++)
+    inval[i] = pow(10, inval[i]);
 }
 
 /** Return the minimum of an array.
