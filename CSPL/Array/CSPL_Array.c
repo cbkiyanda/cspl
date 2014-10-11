@@ -37,6 +37,30 @@ void CSPL_Array_clip(double *inval,  /* input array to clip  */
   }
 }
 
+/** Scale the elements of an array to within a range (in place, i.e. this
+ * function modifies the input array).
+ *
+ *
+ * @param [inout] inval The input array.
+ * @param [in] min @f$ A_{min} @f$.
+ * @param [in] max @f$ A_{max} @f$.
+ * @param [in] n The number of elements in the array.
+ */
+void CSPL_Array_scale(double *inval,       /* (in-place) input array to scale  */
+		     const double min,     /* (input) min value to scale to */
+		     const double max,     /* (input) max value to scale to */
+		      const long n) {      /* (input) length of the array */
+  double _range = CSPL_Array_range(inval, n);
+  double _min   = CSPL_Array_min(inval, n);
+  long i;
+  for (i=0; i<n;i++) {
+    inval[i] -= _min;
+    inval[i] /= _range;
+    inval[i] *= (max-min);
+    inval[i] += min;
+  }
+}
+
 /** Return the minimum of an array.
  *
  *

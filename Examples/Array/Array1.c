@@ -57,6 +57,12 @@ int main(void) {
   for (i=0;i<5;i++) 
     printf("dtmp[%ld]=%lf\n", i, dtmp[i]);
 
+  CSPL_Array_scale(dat1, 1, 10, 5);
+  printf("\nScaled to [1,10] gives:\n");
+  for (i=0;i<5;i++) 
+    printf("dat1[%ld]=%lf\n", i, dat1[i]);
+
+
   return(0);
 }
 

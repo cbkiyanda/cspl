@@ -104,5 +104,12 @@ void CSPL_Array_filedump1d(const char *filename,  /* (input) filename to output 
 			   const int m,                 /* (input) number of arrays to dump */
 			   ...);                  /* (input) the arrays */
 
+/* Function to scale an array of doubles between an upper and lower bound */
+/* replaces the input array with the scaled version */
+void CSPL_Array_scale(double *inval,  /* (in-place) input array to scale  */
+		     const double min,     /* (input) min value to scale to */
+		     const double max,     /* (input) max value to scale to */
+		     const long n);        /* (input) length of the array */
+
 
 #endif /* CSPL_Array_H */
