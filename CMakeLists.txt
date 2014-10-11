@@ -22,6 +22,7 @@ set (CSPL_TARGET_OBJECTS
     $<TARGET_OBJECTS:CSPL_Sort>	
     $<TARGET_OBJECTS:CSPL_Array>
     $<TARGET_OBJECTS:CSPL_Special>
+    $<TARGET_OBJECTS:CSPLA>
     )
          
 add_library (CSPL ${CSPL_TARGET_OBJECTS})
