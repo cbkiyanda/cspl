@@ -1,7 +1,7 @@
 cspl
 ====
 
-Common Science Programming Library
+Common Scientific Programming Library
 
 This is meant to be an organic growing software library for scientific programming across fields.
 
