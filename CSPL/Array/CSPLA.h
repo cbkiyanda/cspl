@@ -10,17 +10,22 @@
     TYPES
 *************************************************/
 typedef struct CSPLA_1D {
-  double *data;
   long n;
+  long total_len;
+  long *sizes;
+  double *data;
 } CSPLA_1D;
 
 typedef struct CSPLA_2D {
-  double **data;
   long n;
+  long total_len;
+  long *sizes;
+  double **data;
 } CSPLA_2D;
 
 typedef struct CSPLA_3D {
   double ***data;
+  long total_len;
   long n;
 } CSPLA_3D;
 
@@ -70,6 +75,26 @@ void CSPLA_1D_arange(CSPLA_1D *arr);
 void CSPLA_1D_print(CSPLA_1D *arr);
 
 void CSPLA_1D_printlong(CSPLA_1D *arr);
+
+
+
+/************************************************
+    CSPLA multi-D try
+*************************************************/
+
+typedef struct CSPLA {
+  long ndim;
+  long total_len;
+  long *sizes;
+  double *data;
+} CSPLA;
+
+
+CSPLA *CSPLA_Init( long sizes[], const long ndim);
+
+void CSPLA_Free(CSPLA *in);
+
+void CSPLA_arange(CSPLA *arr);
 
 
 #endif /* CSPL_Array_H */
