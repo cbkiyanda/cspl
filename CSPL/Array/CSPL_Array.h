@@ -11,6 +11,22 @@
     MACROS
 *************************************************/
 
+/*
+ * typesafety, 
+ * http://stackoverflow.com/questions/3437404/min-and-max-in-c
+ */
+#define array_max(a,b) \
+  ({ __typeof__ (a) _a = (a);	\
+    __typeof__ (b) _b = (b);	\
+    _a > _b ? _a : _b; })
+
+#define array_min(a,b) \
+  ({ __typeof__ (a) _a = (a);	\
+    __typeof__ (b) _b = (b);	\
+    _a < _b ? _a : _b; })
+
+
+
 /**
  * \def CSPL_Array_add(a, b, c, n)
  * Macro to add two arrays of the same type element by element. a+b=c for arrays of a given type
@@ -117,5 +133,9 @@ void CSPL_Array_logscale(double *inval,  /* (in-place) input array to scale  */
 			 const double min,     /* (input) min value to scale to */
 			 const double max,     /* (input) max value to scale to */
 			 const long n);        /* (input) length of the array */
+
+
+double CSPL_Array_quickselect(long index, double *inval, long left, long right);
+
 
 #endif /* CSPL_Array_H */

@@ -11,6 +11,8 @@
 #include <string.h>
 
 #include "CSPL_Array.h"
+#include "../Special/CSPL_Special.h"  /* CSPL_Sign */
+#include "../Sort/CSPL_Sort.h"
 
 /** Clip the elements of an array to within a range (in place, i.e. this
  * function modifies the input array).
@@ -195,3 +197,71 @@ void CSPL_Array_filedump1d(const char *filename, const long n, const int m, ...)
   // }
   free(arrs);
 }
+
+/** Compute the value of an index of an array using the quickselect. This is accurate
+ * and optimized but cannot add data at a later time
+ * Algorithm from:
+ * Tibshirani, Ryan J. "Fast computation of the median by successive binning."  
+ * arXiv preprint arXiv:0806.3301 (2008). 
+ * original reference:
+ * Floyd, Robert W., and Ronald L. Rivest. "Algorithm 489: the algorithm 
+ * SELECT—for finding the i th smallest of n elements [M1]." Communications
+ * of the ACM 18.3 (1975): 173.
+ * @param [in] index The desired index value, where array[k] is the (k+1)th smallest element when left = 0.
+ * @param [in] inval The input array.
+ * @param [in] left Leftmost index of the array to use.
+ * @param [in] right Rightmost index of the array to use.
+ * @return The value of the median.
+ */ 
+double CSPL_Array_quickselect(long index, double *inval, long left, long right) {
+  double *incopy; // do this so that the input array is not changed
+  double median; 
+  long ans;
+  double tmpvals[2]; // for the even case
+  long newLeft;
+  long newRight;
+  long n, i, j;
+  long k=index; 
+  double z, s, sd, t;
+
+  while (right > left) {
+    if ((right - left) > 600) { // the 600 is Arb from the original method
+      n = right - left + 1;
+      i = k - left + 1;
+      z = log((double)n);
+      // the 0.5 is Arb from the original method
+      s = 0.5 * exp(2.0 * z/3.0);
+      sd = 0.5 * sqrt(z*s*((double)n-s)/(double)n) * CSPL_Sign((double)i-(double)n/2.0);
+      newLeft = array_max(left, k+(n-i)*(long)(s/(double)n) + (long)sd);
+      newRight = array_min(right, k+(n-i) * (long)(s/(double)n) + sd);
+      CSPL_Array_quickselect(k, inval, newLeft, newRight);
+    }
+    t = inval[k];
+    i = left;
+    j = right;
+    Sort_SWAP(inval[left], inval[k], double);
+    if (inval[right] > t)
+      Sort_SWAP(inval[right], inval[left], double);
+    while (i < j) {
+      Sort_SWAP(inval[i], inval[j], double);
+      i++;
+      j--;
+      while (inval[i] < t)
+	i++;
+      while (inval[j] > t)
+	j--;
+    }
+    if (inval[left] == t) {
+      Sort_SWAP(inval[left], inval[j], double);
+    } else {
+      j++;
+      Sort_SWAP(inval[j], inval[right], double);
+    }
+    if (j <= k)
+      left = j+1;
+    if (k <= j)
+      right = j-1;
+  }
+  return(inval[k]); 
+}
+

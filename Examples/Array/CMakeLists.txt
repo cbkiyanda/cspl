@@ -10,3 +10,8 @@ target_include_directories( Array1 PRIVATE ${INCLUDES} )
 add_executable( Array2 Array2.c )
 target_link_libraries (Array2 LINK_PUBLIC CSPL)
 target_include_directories( Array2 PRIVATE ${INCLUDES} )
+
+add_executable( quickselect quickselect.c )
+target_link_libraries (quickselect LINK_PUBLIC CSPL)
+target_include_directories( quickselect PRIVATE ${INCLUDES} )
+
