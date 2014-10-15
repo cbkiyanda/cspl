@@ -2,6 +2,7 @@
 #define CSPL_Stats_MEDIAN_H
 
 
+#define CSPL_Stats_median CSPL_Stats_median_quickselect
 
 
 /* Implementaion from: */
@@ -12,8 +13,10 @@
 /* Compute the median of an array of doubles */
 double CSPL_Stats_median_sort(double *inval, long n);
 
+/* Compute the median of an array of doubles */
+double CSPL_Stats_median_quickselect(double *inval, const long n);
 
-double CSPL_Stats_median_quickselect(double *inval, long n);
+
 
 
 #endif /* CSPL_Stats_MEDIAN_H */

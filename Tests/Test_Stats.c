@@ -36,6 +36,12 @@ int main(void) {
   ans = CSPL_Stats_median_sort(data1, 11);
   printf("CSPL_Stats_median_sort=%lf, %lf\n", ans, median_ans);
   assert_float_test(ans, median_ans, 1e-4);
+  ans = CSPL_Stats_median_quickselect(data1, 11);
+  printf("CSPL_Stats_median_quickselect=%lf, %lf\n", ans, median_ans);
+  assert_float_test(ans, median_ans, 1e-4);
+
+  assert_float_test( CSPL_Stats_median_sort(data1, 11), 
+		     CSPL_Stats_median_quickselect(data1, 11), 1e-4);
 
   ans = CSPL_Stats_std(data1, 11);
   printf("CSPL_Stats_std=%lf, %lf\n", ans, std_ans);

@@ -47,12 +47,12 @@ double CSPL_Stats_median_sort(double *inval, long n) {
  * @param [in] n The length of the input array.
  * @return The value of the median.
  */ 
-double CSPL_Stats_median_quickselect(double *inval, long n) {
+double CSPL_Stats_median_quickselect(double *inval, const long n) {
   double ans[2];
   unsigned long index;
   double outval;
 
-  index = n/2;
+  index = n/2; // We want integer division here
   if (0 == n % 2) { // even
     ans[0] = CSPL_Array_quickselect(index, inval, 0, n-1);
     index--;
