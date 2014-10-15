@@ -105,8 +105,29 @@ int main(void) {
     }  
   }
   
+  {
+    double d1[5] = {5.6,   3.4, 2, 4.5, 3.1};
+    double answer1[5] = {2, 3.1, 3.4, 4.5, 5.6};
+    unsigned long i;
+    double tst;
+    for (i=0;i<5;i++) {
+      tst = CSPL_Array_quickselect(i, d1, 0, 4);
+      printf("CSPL_Array_quickselect(%ld, d1, 0, 4)=%lf\n", i, tst);
+      assert_float_test(tst, answer1[i], 1e-5);
+    }
+  }
 
-
+  {
+    double d1[5] = {5.6,   3.4, 2, 4.5, 3.1};
+    double answer1[5] = {2, 3.4, 4.5, 5.6};
+    unsigned long i;
+    double tst;
+    for (i=0;i<4;i++) {
+      tst = CSPL_Array_quickselect(i, d1, 0, 3);
+      printf("CSPL_Array_quickselect(%ld, d1, 0, 3)=%lf\n", i, tst);
+      assert_float_test(tst, answer1[i], 1e-5);
+    }
+  }
 
 
   return(0);
