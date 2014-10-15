@@ -2,7 +2,6 @@
 
 #include "CSPL_Sort.h"
 
-#define Sort_SWAP(a,b,type) {type tmp=a;a=b;b=tmp;}
 
 /** The sort structure.
  */

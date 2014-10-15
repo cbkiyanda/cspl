@@ -6,6 +6,9 @@
 #ifndef CSPL_Sort_H
 #define CSPL_Sort_H
 
+#define Sort_SWAP(a,b,type) {type tmp=a;a=b;b=tmp;}
+
+
 /* Function to compare doubles, it is meant to be a stable comparison also */
 /* from stdlib example docs */
 /* mainly used in stdlib.h qsort */
