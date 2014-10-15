@@ -217,11 +217,13 @@ double CSPL_Array_quickselect(long index, double *inval, long left, long right) 
   double *incopy; // do this so that the input array is not changed
   unsigned long i, j;
   unsigned long k=index; 
-  double t;
+  double t, ans;
 
   // just copy the part we are using
-  incopy = (double*)calloc(right-left, sizeof(double));
-  memcpy(incopy, &inval[left], sizeof(double)*(right-left));
+  // this is right-left+1 elements since zero based indexing
+  incopy = (double*)calloc(right-left+1, sizeof(double));
+  // this is putting (right-left+1) doubles starting at &inval[left] into incopy
+  memcpy(incopy, &inval[left], sizeof(double)*(right-left+1));
 
   while (right > left) {
     t = incopy[k];
@@ -250,5 +252,7 @@ double CSPL_Array_quickselect(long index, double *inval, long left, long right) 
     if (k <= j)
       right = j-1;
   }
-  return(incopy[k]); 
+  ans = incopy[k];
+  free(incopy);
+  return(ans); 
 }
