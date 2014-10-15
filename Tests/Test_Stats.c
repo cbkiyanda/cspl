@@ -9,7 +9,6 @@
  * just check this by return code
  */
 int main(void) {
-  double nCDF;
   double ans;
   // these are taken from scipy.stats.norm
   // should be independently checked

@@ -9,8 +9,6 @@
  * just check this by return code
  */
 int main(void) {
-  double nCDF;
-  double quan;
   long i;
   double ans;
   // these are taken from scipy.stats.norm

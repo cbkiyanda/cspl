@@ -8,7 +8,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h> /* memcpy */
 
 #include "CSPL_Array.h"
 #include "../Special/CSPL_Special.h"  /* CSPL_Sign */
@@ -215,53 +215,40 @@ void CSPL_Array_filedump1d(const char *filename, const long n, const int m, ...)
  */ 
 double CSPL_Array_quickselect(long index, double *inval, long left, long right) {
   double *incopy; // do this so that the input array is not changed
-  double median; 
-  long ans;
-  double tmpvals[2]; // for the even case
-  long newLeft;
-  long newRight;
-  long n, i, j;
-  long k=index; 
-  double z, s, sd, t;
+  unsigned long i, j;
+  unsigned long k=index; 
+  double t;
+
+  // just copy the part we are using
+  incopy = (double*)calloc(right-left, sizeof(double));
+  memcpy(incopy, &inval[left], sizeof(double)*(right-left));
 
   while (right > left) {
-    if ((right - left) > 600) { // the 600 is Arb from the original method
-      n = right - left + 1;
-      i = k - left + 1;
-      z = log((double)n);
-      // the 0.5 is Arb from the original method
-      s = 0.5 * exp(2.0 * z/3.0);
-      sd = 0.5 * sqrt(z*s*((double)n-s)/(double)n) * CSPL_Sign((double)i-(double)n/2.0);
-      newLeft = array_max(left, k+(n-i)*(long)(s/(double)n) + (long)sd);
-      newRight = array_min(right, k+(n-i) * (long)(s/(double)n) + sd);
-      CSPL_Array_quickselect(k, inval, newLeft, newRight);
-    }
-    t = inval[k];
+    t = incopy[k];
     i = left;
     j = right;
-    Sort_SWAP(inval[left], inval[k], double);
-    if (inval[right] > t)
-      Sort_SWAP(inval[right], inval[left], double);
+    Sort_SWAP(incopy[left], incopy[k], double);
+    if (incopy[right] > t)
+      Sort_SWAP(incopy[right], incopy[left], double);
     while (i < j) {
-      Sort_SWAP(inval[i], inval[j], double);
+      Sort_SWAP(incopy[i], incopy[j], double);
       i++;
       j--;
-      while (inval[i] < t)
+      while (incopy[i] < t)
 	i++;
-      while (inval[j] > t)
+      while (incopy[j] > t)
 	j--;
     }
-    if (inval[left] == t) {
-      Sort_SWAP(inval[left], inval[j], double);
+    if (incopy[left] == t) {
+      Sort_SWAP(incopy[left], incopy[j], double);
     } else {
       j++;
-      Sort_SWAP(inval[j], inval[right], double);
+      Sort_SWAP(incopy[j], incopy[right], double);
     }
     if (j <= k)
       left = j+1;
     if (k <= j)
       right = j-1;
   }
-  return(inval[k]); 
+  return(incopy[k]); 
 }
-
