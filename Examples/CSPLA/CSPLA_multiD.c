@@ -33,6 +33,7 @@ int main(void) {
  {
   CSPLA *arr;
   long sizes[2] = {10,2};
+  long ind;
   printf("/////////////////////////\n");
   printf("Demonstrating CSPLA 2D \n");
   printf("/////////////////////////\n");
@@ -43,6 +44,16 @@ int main(void) {
 
   for (i=0;i<arr->total_len;i++)
     printf("arr->data[%ld]=%lf\n", i, arr->data[i] );
+
+  ind = CSPLA_index(arr, 2, 0);
+  printf("arr->data[2][0]->[%ld]=%lf\n", ind, arr->data[ind] );
+  ind = CSPLA_index(arr, 2, 1);
+  printf("arr->data[2][1]->[%ld]=%lf\n", ind, arr->data[ind] );
+  ind = CSPLA_index(arr, 0, 1);
+  printf("arr->data[0][1]->[%ld]=%lf\n", ind, arr->data[ind] );
+  ind = CSPLA_index(arr, 1, 0);
+  printf("arr->data[1][0]->[%ld]=%lf\n", ind, arr->data[ind] );
+
 
   CSPLA_Free(arr);
 

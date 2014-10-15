@@ -90,6 +90,9 @@ typedef struct CSPLA {
 } CSPLA;
 
 
+long CSPLA_index(CSPLA *ina, ...);
+
+
 CSPLA *CSPLA_Init( long sizes[], const long ndim);
 
 void CSPLA_Free(CSPLA *in);
