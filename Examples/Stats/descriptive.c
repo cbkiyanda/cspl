@@ -23,8 +23,8 @@ int main(void) {
   printf("mean1: %lf\n", CSPL_Stats_mean(dat1, 5));
   printf("mean2: %lf\n", CSPL_Stats_mean(dat2, 6));
 
-  printf("median1: %lf\n", CSPL_Stats_median(dat1, 5));
-  printf("median2: %lf\n", CSPL_Stats_median(dat2, 6));
+  printf("median1: %lf\n", CSPL_Stats_median_sort(dat1, 5));
+  printf("median2: %lf\n", CSPL_Stats_median_sort(dat2, 6));
 
   printf("IQR1: %lf\n", CSPL_Stats_IQR(dat1, 5));
   printf("IQR2: %lf\n", CSPL_Stats_IQR(dat2, 6));

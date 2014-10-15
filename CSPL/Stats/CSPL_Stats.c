@@ -17,30 +17,6 @@ double CSPL_Stats_mean(double *inval, long n) {
   return (sum/(double)n);
 }
 
-double CSPL_Stats_median(double *inval, long n) {
-  double *incopy; // do this so that the input array is not changed
-  double median; 
-  long index;
-  double tmpvals[2]; // for the even case
-
-  incopy = (double*)calloc(n, sizeof(double));
-  memcpy(incopy, inval, sizeof(double)*n);
-  
-  // sort the data
-  qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
-  if ( 0 == n % 2) {
-    index = (n/2)-1;
-    tmpvals[0] = incopy[index];
-    tmpvals[1] = incopy[index+1];
-    median = CSPL_Stats_mean(tmpvals, 2);
-  } else {
-    // median is the n/2th item
-    median = incopy[((n+1)/2)-1];
-  }
-  free(incopy);  
-  return(median);
-}
-
 /* Compute the standard deviation of an array */
 double CSPL_Stats_skew(double *inval,    // (input) input array 
 		       long n) {         // (input) length of array

@@ -34,8 +34,8 @@ int main(void) {
   printf("CSPL_Stats_mean=%lf, %lf\n", ans, mean_ans);
   assert_float_test(ans, mean_ans, 1e-4);
 
-  ans = CSPL_Stats_median(data1, 11);
-  printf("CSPL_Stats_median=%lf, %lf\n", ans, median_ans);
+  ans = CSPL_Stats_median_sort(data1, 11);
+  printf("CSPL_Stats_median_sort=%lf, %lf\n", ans, median_ans);
   assert_float_test(ans, median_ans, 1e-4);
 
   ans = CSPL_Stats_std(data1, 11);
@@ -90,7 +90,7 @@ int main(void) {
     assert_float_test(CSPL_Stats_percentile(data, 60, 5), 0.700000, 1e-5);
     printf("CSPL_Stats_percentile %lf\n", CSPL_Stats_percentile(data, 82, 5));
     assert_float_test(CSPL_Stats_percentile(data, 82, 5), 0.920000, 1e-5);
-    assert_float_test(CSPL_Stats_percentile(data, 50, 5), CSPL_Stats_median(data, 5) , 1e-5);
+    assert_float_test(CSPL_Stats_percentile(data, 50, 5), CSPL_Stats_median_sort(data, 5) , 1e-5);
   }
   {
     long N=11;

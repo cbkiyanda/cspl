@@ -3,15 +3,12 @@
 
 #include "CSPL_Stats_CDF.h"
 #include "CSPL_Stats_Normal.h"
+#include "CSPL_Stats_median.h"
 //#include "CSPL_Stats_Ranking.h"
 
 /* Compute the arithmetic mean of an array */
 double CSPL_Stats_mean(double *inval,    // (input) input array 
 		 long n);                // (input) length of array
-
-/* Compute the median of an array of doubles */
-double CSPL_Stats_median(double *inval, // (input) input array
-		    long n);            // (input) length of array
 
 /* Compute the geometric mean of an array of doubles */
 double CSPL_Stats_geometric_mean(double *inval, // (input) input array

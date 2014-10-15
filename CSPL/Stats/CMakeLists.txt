@@ -6,10 +6,16 @@ set ( CSPL_Stats_Files
     CSPL_Stats_CDF.h
     CSPL_Stats_Normal.c
     CSPL_Stats_Normal.h
+    CSPL_Stats_Median.c
+    CSPL_Stats_Median.h
  )
 
 add_library (CSPL_Stats OBJECT ${CSPL_Stats_Files})
-install( FILES CSPL_Stats.h CSPL_Stats_CDF.h DESTINATION include )
+install( FILES CSPL_Stats.h 
+               CSPL_Stats_CDF.h 
+               CSPL_Stats_Normal.h 
+               CSPL_Stats_Median.h 
+         DESTINATION include )
 
 # this is -fPIC
 set_target_properties( CSPL_Stats PROPERTIES POSITION_INDEPENDENT_CODE TRUE )
