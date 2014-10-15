@@ -13,6 +13,8 @@
 double CSPL_Stats_median_sort(double *inval, long n);
 
 
+double CSPL_Stats_median_quickselect(double *inval, long n);
+
 
 #endif /* CSPL_Stats_MEDIAN_H */
 

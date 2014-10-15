@@ -6,6 +6,7 @@
 #include "CSPL_Stats_Median.h"
 #include "CSPL_Stats.h"
 #include "../Sort/CSPL_Sort.h"
+#include "../Array/CSPL_Array.h"
 
 
 /** Compute the median of an array using the sort method. This is accurate
@@ -36,6 +37,31 @@ double CSPL_Stats_median_sort(double *inval, long n) {
   }
   free(incopy);  
   return(median);
+}
+
+
+/** Compute the median of an array using the quickselect method. 
+ * if the input has an odd number of values this calls CSPL_Array_quickselect once
+ * otherwise twice and averages. The median is the middle index
+ * @param [in] inval The input array.
+ * @param [in] n The length of the input array.
+ * @return The value of the median.
+ */ 
+double CSPL_Stats_median_quickselect(double *inval, long n) {
+  double ans[2];
+  unsigned long index;
+  double outval;
+
+  index = n/2;
+  if (0 == n % 2) { // even
+    ans[0] = CSPL_Array_quickselect(index, inval, 0, n-1);
+    index--;
+    ans[1] = CSPL_Array_quickselect(index, inval, 0, n-1);
+    outval = CSPL_Stats_mean(ans, 2);
+  } else {
+    outval = CSPL_Array_quickselect(index, inval, 0, n-1);
+  }
+  return(outval); 
 }
 
 
