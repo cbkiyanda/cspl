@@ -26,7 +26,6 @@
     _a < _b ? _a : _b; })
 
 
-
 /**
  * \def CSPL_Array_add(a, b, c, n)
  * Macro to add two arrays of the same type element by element. a+b=c for arrays of a given type
@@ -136,6 +135,14 @@ void CSPL_Array_logscale(double *inval,  /* (in-place) input array to scale  */
 
 
 double CSPL_Array_quickselect(long index, double *inval, long left, long right);
+
+void CSPL_Array_linspace(double *inval,       /* (in-place) input array to populate  */
+			 const double min,     /* (input) min value to scale to */
+			 const double max,     /* (input) max value to scale to */
+			 const long n);       /* (input) length of the array */
+
+double CSPL_Array_sum(double *a, unsigned long n);
+double CSPL_Array_suml(long *a, unsigned long n);
 
 
 #endif /* CSPL_Array_H */

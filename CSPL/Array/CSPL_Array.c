@@ -256,3 +256,50 @@ double CSPL_Array_quickselect(long index, double *inval, long left, long right) 
   free(incopy);
   return(ans); 
 }
+
+/** Populate an array with linearly scaled elements from min to max.
+ *
+ * @param [inout] inval The input array.
+ * @param [in] min @f$ A_{min} @f$.
+ * @param [in] max @f$ A_{max} @f$.
+ * @param [in] n The number of elements in the array.
+ */
+void CSPL_Array_linspace(double *inval,       /* (in-place) input array to populate  */
+			 const double min,     /* (input) min value to scale to */
+			 const double max,     /* (input) max value to scale to */
+			 const long n) {      /* (input) length of the array */
+  unsigned long i;
+  for (i=0; i<n;i++)
+    inval[i] = (double)i;
+  CSPL_Array_scale(inval, min, max, n);
+}
+
+
+/** Sum up and array. (double)
+ * @param [in] a The array to sum.
+ * @param [in] n The number of elements in each array.
+ * @return sum The sum of the array.
+ */
+double CSPL_Array_sum(double *a, unsigned long n)  {
+  long i;
+  double sum=0;
+  for (i=0;i<n;i++) {
+    sum += a[i];	
+  } 
+  return(sum);
+}
+
+/** Sum up and array. (long)
+ * @param [in] a The array to sum.
+ * @param [in] n The number of elements in each array.
+ * @return sum The sum of the array.
+ */
+double CSPL_Array_suml(long *a, unsigned long n)  {
+  long i;
+  long sum=0;
+  for (i=0;i<n;i++) {
+    sum += a[i];	
+  } 
+  return(sum);
+}
+
