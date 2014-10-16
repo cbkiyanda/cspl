@@ -21,9 +21,9 @@ double CSPL_Special_Erf1(double x) { // (input) position to compute the error fu
   double a3 = 1.421413741;
   double a4 = -1.453152027;
   double a5 = 1.061405429;
-  t = 1.0/(1.0+p*(x*CSPL_Sign(x)));
+  t = 1.0/(1.0+p*(x*sign));
   tmp = (a1*t + a2*t*t + a3*t*t*t + a4*t*t*t*t + a5*t*t*t*t*t);
-  return ( CSPL_Sign(x) * (1-tmp/exp(x*x)) );
+  return ( sign * (1-tmp/exp(x*x)) );
 }
 
 /* 
