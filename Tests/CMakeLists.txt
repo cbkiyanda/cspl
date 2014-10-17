@@ -10,7 +10,7 @@ add_executable( Test_Array Test_Array.c )
 add_test( Array-test Test_Array )
 target_link_libraries (Test_Array LINK_PUBLIC CSPL)
 
-add_executable( Test_Stats_Median Test_Stats_Median.c )
-add_test( Stats_Median-test Test_Stats_Median )
-target_link_libraries (Test_Stats_Median LINK_PUBLIC CSPL)
+#add_executable( Test_Stats_Median Test_Stats_Median.c )
+#add_test( Stats_Median-test Test_Stats_Median )
+#target_link_libraries (Test_Stats_Median LINK_PUBLIC CSPL)
 
