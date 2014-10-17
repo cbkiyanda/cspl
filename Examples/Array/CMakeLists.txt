@@ -15,3 +15,6 @@ add_executable( quickselect quickselect.c )
 target_link_libraries (quickselect LINK_PUBLIC CSPL)
 target_include_directories( quickselect PRIVATE ${INCLUDES} )
 
+add_executable( bisect bisect.c )
+target_link_libraries (bisect LINK_PUBLIC CSPL)
+target_include_directories( bisect PRIVATE ${INCLUDES} )

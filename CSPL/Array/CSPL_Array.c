@@ -303,3 +303,38 @@ double CSPL_Array_suml(long *a, unsigned long n)  {
   return(sum);
 }
 
+/** Perform a binary search on a sorted array returning the index where the 
+ * value would be inserted, if the value exists it goes after the existing
+ * value. NOTE if the array is not sorted you will be garbage.
+ * @param [in] val The value to look for.
+ * @param [in] a The array to sum.
+ * @param [in] n The number of elements in each array.
+ * @return Index where the value would be inserted.
+ */
+long CSPL_Array_bisect(double val, double *a, unsigned long n) {
+  long left=0, right, idx;
+  right = n-1;
+
+  // check for special cases
+  if (val < a[0]) // off the left
+    return(0);
+  if (val >= a[n-1])
+    return(n);
+  
+  while ( (right - left) > 1) {
+    idx = (right-left)/2+left;
+    if (val < a[idx] ) { // it goes to the left
+      right = idx;
+    } else {
+      left = idx;
+    }
+  }
+
+  while(val == a[idx]) {
+    idx++;
+    right = idx-1;
+  }
+
+  return(right);
+}
+

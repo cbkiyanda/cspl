@@ -144,5 +144,6 @@ void CSPL_Array_linspace(double *inval,       /* (in-place) input array to popul
 double CSPL_Array_sum(double *a, unsigned long n);
 double CSPL_Array_suml(long *a, unsigned long n);
 
+long CSPL_Array_bisect(double val, double *a, unsigned long n);
 
 #endif /* CSPL_Array_H */

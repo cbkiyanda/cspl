@@ -10,6 +10,7 @@
 #define float_test(v1, v2, tol) (fabs( (v1) - (v2) )  < (tol))
 
 #define assert_float_test(v1, v2, tol) {if ( float_test(v1, v2, tol) == 0) return(1);}
+#define assert_long_test(v1, v2) {if ( v1 != v2) return(1);}
 
 
 #endif /* CSPL_Test_H */
