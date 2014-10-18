@@ -330,9 +330,9 @@ long CSPL_Array_bisect(double val, double *a, unsigned long n) {
     }
   }
 
-  while(val == a[idx]) {
-    idx++;
-    right = idx-1;
+  while(Array_dblcmp(val, a[right])) {
+    right++;
+    //right = idx-1;
   }
 
   return(right);

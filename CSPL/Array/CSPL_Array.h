@@ -6,10 +6,15 @@
 #ifndef CSPL_Array_H
 #define CSPL_Array_H
 
+#include <float.h>
+
 
 /************************************************
     MACROS
 *************************************************/
+
+#define Array_dblcmp(x, y) (fabs((x)-(y)) < DBL_EPSILON * fabs((x)+(y)) \
+				|| fabs((x)-(y)) < DBL_MIN)
 
 /*
  * typesafety, 

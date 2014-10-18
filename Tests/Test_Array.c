@@ -163,6 +163,31 @@ int main(void) {
     assert_long_test(5, ans);
   }
 
+  {
+    // this was added after BAL found a bug
+    double dat1[5] = {1, 4, 7, 8, 9};
+    long ans, i;
+    double val;
+    
+    for (i=0; i<5; i++)
+      printf("dat1[%ld]=%lf\n", i, dat1[i]);
+
+    val = 0;
+    ans = CSPL_Array_bisect(val, dat1, 5);
+    printf("CSPL_Array_bisect(%lf, dat1, 5)=%ld\n", val, ans);
+    assert_long_test(0, ans);
+
+    val = 3;
+    ans = CSPL_Array_bisect(val, dat1, 5);
+    printf("CSPL_Array_bisect(%lf, dat1, 5)=%ld\n", val, ans);
+    assert_long_test(1, ans);
+    
+    val = 4.0;
+    ans = CSPL_Array_bisect(val, dat1, 5);
+    printf("CSPL_Array_bisect(%lf, dat1, 5)=%ld\n", val, ans);
+    assert_long_test(2, ans);
+  }
+
   return(0);
 }
 
