@@ -17,15 +17,8 @@ WORKDIR /cspl
 run git clone https://github.com/cbkiyanda/cspl.git
 run cd cspl
 
-#cmd ["bash"]
-#run bash
-run cmake cspl -DBUILD_SHARED_LIBS=ON -DBUILD_TESTS=ON -DBUILD_EXAMPLES=ON
+run ["cmake", "cspl", "-DBUILD_SHARED_LIBS=ON", "-DBUILD_TESTS=ON", "-DBUILD_EXAMPLES=ON"]
 run make -j2
 run make install
-run ctest
 
-#entrypoint [ "valgrind Examples/Array/Array1" ]
-#cmd [ "--help" ]
-
-#onbuild add . /src
-#onbuild workdir /src
+entrypoint [ "ctest" ]
