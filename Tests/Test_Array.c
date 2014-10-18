@@ -129,6 +129,39 @@ int main(void) {
     }
   }
 
+  {
+    double dat1[5] = {1, 2, 5, 7, 8};
+    long ans, i;
+    double val;
+    
+    for (i=0; i<5; i++)
+      printf("dat1[%ld]=%lf\n", i, dat1[i]);
+
+    val = -1;
+    ans = CSPL_Array_bisect(val, dat1, 5);
+    printf("CSPL_Array_bisect(%lf, dat1, 5)=%ld\n", val, ans);
+    assert_long_test(0, ans);
+
+    val = 1.5;
+    ans = CSPL_Array_bisect(val, dat1, 5);
+    printf("CSPL_Array_bisect(%lf, dat1, 5)=%ld\n", val, ans);
+    assert_long_test(1, ans);
+    
+    val = 5.0;
+    ans = CSPL_Array_bisect(val, dat1, 5);
+    printf("CSPL_Array_bisect(%lf, dat1, 5)=%ld\n", val, ans);
+    assert_long_test(3, ans);
+
+    val = 5.5;
+    ans = CSPL_Array_bisect(val, dat1, 5);
+    printf("CSPL_Array_bisect(%lf, dat1, 5)=%ld\n", val, ans);
+    assert_long_test(3, ans);
+
+    val = 8.5;
+    ans = CSPL_Array_bisect(val, dat1, 5);
+    printf("CSPL_Array_bisect(%lf, dat1, 5)=%ld\n", val, ans);
+    assert_long_test(5, ans);
+  }
 
   return(0);
 }
