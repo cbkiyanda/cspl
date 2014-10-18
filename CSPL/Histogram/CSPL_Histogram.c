@@ -20,7 +20,6 @@ CSPL_Hist *CSPL_InitHistogram() {
 }
 
 short CSPL_Histogram_set_bins(CSPL_Hist *hist, double *edges, long nbins) {
-  long i;
   hist->nbins = nbins;
   hist->edges = edges;
 
