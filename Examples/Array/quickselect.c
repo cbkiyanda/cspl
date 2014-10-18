@@ -20,7 +20,7 @@ int main(void) {
     printf("  %lf\n", dat1[i]);
   printf("dat2:\n");
   for (i=0;i<6;i++)
-    printf("%  lf\n", dat2[i]);
+    printf("  %lf\n", dat2[i]);
 
 
   a1 = CSPL_Array_quickselect(0, dat1, 0, 4);
