@@ -6,6 +6,7 @@
 #ifndef CSPL_Histogram_H
 #define CSPL_Histogram_H
 
+
 /************************************************
     TYPES
 *************************************************/
@@ -16,6 +17,7 @@ typedef struct CSPL_Hist {
   long underflow; /// number of elements less than bins
   long overflow; /// number of elements greater than bins
   short uniform; /// Boolean on if the bins are uniform
+  long npts;
 }CSPL_Hist;
 
 /************************************************
@@ -28,6 +30,7 @@ typedef struct CSPL_Hist {
 CSPL_Hist * CSPL_InitHistogram();
 short CSPL_Histogram_set_bins(CSPL_Hist *hist, double *edges, long nbins);
 short CSPL_Histogram_set_uniform(CSPL_Hist *hist, double min, double max, long nbins);
+long CSPL_Histogram_collect(CSPL_Hist *hist, double *data, long len);
 
 void CSPL_Free_Hist(CSPL_Hist *hist);
 
