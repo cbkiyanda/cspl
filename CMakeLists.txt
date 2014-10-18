@@ -16,12 +16,14 @@ add_subdirectory (CSPL/Stats)
 add_subdirectory (CSPL/Sort)
 add_subdirectory (CSPL/Array)
 add_subdirectory (CSPL/Special)
+add_subdirectory (CSPL/Histogram)
 
 set (CSPL_TARGET_OBJECTS
     $<TARGET_OBJECTS:CSPL_Stats>
     $<TARGET_OBJECTS:CSPL_Sort>	
     $<TARGET_OBJECTS:CSPL_Array>
     $<TARGET_OBJECTS:CSPL_Special>
+    $<TARGET_OBJECTS:CSPL_Histogram>
     )
          
 add_library (CSPL ${CSPL_TARGET_OBJECTS})
