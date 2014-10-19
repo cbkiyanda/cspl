@@ -1,6 +1,5 @@
 
 #include <math.h>   /* log and exp */
-#include <stdlib.h> /* qsort */
 
 #include "CSPL_Stats.h"
 #include "../Array/CSPL_Array.h"
@@ -119,7 +118,8 @@ double CSPL_Stats_percentile(double *inval,     // (input) input array
 
   CSPL_Array_copy(inval, incopy, 0, n, double);
 
-  qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
+  CSPL_Sort_mergesort(incopy, n);
+  // qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
 
   // compute the CDF
   //CSPL_Stats_tCDF(inval, cdf, n);

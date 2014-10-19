@@ -143,8 +143,8 @@ void CSPL_Sort_mergesort(double *inval, /* array to be sorted in place */
   
   n1 = n/2;
   n2 = n-n1;
-  A1 = (double *)calloc(n1, sizeof(double));
-  A2 = (double *)calloc(n2, sizeof(double));
+  //A1 = (double *)calloc(n1, sizeof(double));
+  //A2 = (double *)calloc(n2, sizeof(double));
   // first n/2 elements copy from inval to A1
   CSPL_Array_copy(inval, A1, 0, n1, double);
   // the rest go to A1

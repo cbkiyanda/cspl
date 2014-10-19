@@ -1,6 +1,5 @@
  
 #include <stdio.h>
-#include <stdlib.h> /* qsort */
 #include <math.h>   /* log */
 
 #include "CSPL_Stats_Median.h"
@@ -24,7 +23,8 @@ double CSPL_Stats_median_sort(double *inval, long n) {
   CSPL_Array_copy(inval, incopy, 0, n, double);
   
   // sort the data
-  qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
+  CSPL_Sort_mergesort(incopy, n);
+  //  qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
   if ( 0 == n % 2) {
     index = (n/2)-1;
     tmpvals[0] = incopy[index];
@@ -154,7 +154,8 @@ double CSPL_Stats_median_bin(double *inval, const long n) {
     if (samenums == binscnt[median_bin]) { // they were all the same
       median = tmpval;
     } else {
-      qsort(pts_in_bin, binscnt[median_bin], sizeof(double *), CSPL_Sort_comparedoubles);
+      CSPL_Sort_mergesort(pts_in_bin, binscnt[median_bin]);
+      // qsort(pts_in_bin, binscnt[median_bin], sizeof(double *), CSPL_Sort_comparedoubles);
       // sum is >= n_med, back off sum by the number in the median bin
       sum -= binscnt[median_bin];
       sum++; // I think this is a zero index things needed
