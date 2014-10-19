@@ -188,6 +188,36 @@ int main(void) {
     assert_long_test(2, ans);
   }
 
+  {
+    // test CSPL_Array_linspace()
+    double ans[10] = {12.3       ,  14.73333333,  17.16666667,  19.6       ,
+		      22.03333333,  24.46666667,  26.9       ,  29.33333333,
+		      31.76666667,  34.2  };
+    long i;
+    double outval[10];
+
+    CSPL_Array_linspace(outval, 12.3, 34.2, 10);
+    for (i=0;i<10;i++) {
+      printf("CSPL_Array_linspace[%ld]=%lf  ->  %lf\n", i, outval[i], ans[i]);
+      assert_float_test(outval[i], ans[i], 1e-5);	  
+    }
+  }
+
+  {
+    // test CSPL_Array_logspace()
+    double ans[10] = {12.3       ,  13.78008475,  15.4382712 ,  17.2959907 ,
+		      19.37725347,  21.70895895,  24.32124343,  27.24786957,
+		      30.52666276,  34.2  };
+    long i;
+    double outval[10];
+
+    CSPL_Array_logspace(outval, 12.3, 34.2, 10);
+    for (i=0;i<10;i++) {
+      printf("CSPL_Array_logspace[%ld]=%lf  ->  %lf\n", i, outval[i], ans[i]);
+      assert_float_test(outval[i], ans[i], 1e-5);	  
+    }
+  }
+
   return(0);
 }
 

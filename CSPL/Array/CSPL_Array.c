@@ -272,6 +272,22 @@ void CSPL_Array_linspace(double *inval,       /* (in-place) input array to popul
   CSPL_Array_scale(inval, min, max, n);
 }
 
+/** Populate an array with logarithmically scaled elements from min to max.
+ *
+ * @param [inout] inval The input array.
+ * @param [in] min @f$ A_{min} @f$.
+ * @param [in] max @f$ A_{max} @f$.
+ * @param [in] n The number of elements in the array.
+ */
+void CSPL_Array_logspace(double *inval,       /* (in-place) input array to populate  */
+			 const double min,     /* (input) min value to scale to */
+			 const double max,     /* (input) max value to scale to */
+			 const long n) {      /* (input) length of the array */
+  unsigned long i;
+  for (i=0; i<n;i++)
+    inval[i] = (double)i;
+  CSPL_Array_logscale(inval, min, max, n);
+}
 
 /** Sum up and array. (double)
  * @param [in] a The array to sum.

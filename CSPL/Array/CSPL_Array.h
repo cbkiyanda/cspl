@@ -164,6 +164,11 @@ void CSPL_Array_linspace(double *inval,       /* (in-place) input array to popul
 			 const double max,     /* (input) max value to scale to */
 			 const long n);       /* (input) length of the array */
 
+void CSPL_Array_logspace(double *inval,       /* (in-place) input array to populate  */
+			 const double min,     /* (input) min value to scale to */
+			 const double max,     /* (input) max value to scale to */
+			 const long n);       /* (input) length of the array */
+
 double CSPL_Array_sum(double *a, unsigned long n);
 double CSPL_Array_suml(long *a, unsigned long n);
 
