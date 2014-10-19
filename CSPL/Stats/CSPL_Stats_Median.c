@@ -1,7 +1,6 @@
  
 #include <stdio.h>
 #include <stdlib.h> /* qsort */
-#include <string.h> /* memcpy */
 #include <math.h>   /* log */
 
 #include "CSPL_Stats_Median.h"
@@ -22,8 +21,7 @@ double CSPL_Stats_median_sort(double *inval, long n) {
   long index;
   double tmpvals[2]; // for the even case
 
-  incopy = (double*)calloc(n, sizeof(double));
-  memcpy(incopy, inval, sizeof(double)*n);
+  CSPL_Array_copy(inval, incopy, 0, n, double);
   
   // sort the data
   qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);

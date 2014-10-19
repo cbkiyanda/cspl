@@ -8,7 +8,6 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h> /* memcpy */
 
 #include "CSPL_Array.h"
 #include "../Special/CSPL_Special.h"  /* CSPL_Sign */
@@ -221,9 +220,8 @@ double CSPL_Array_quickselect(long index, double *inval, long left, long right) 
 
   // just copy the part we are using
   // this is right-left+1 elements since zero based indexing
-  incopy = (double*)calloc(right-left+1, sizeof(double));
   // this is putting (right-left+1) doubles starting at &inval[left] into incopy
-  memcpy(incopy, &inval[left], sizeof(double)*(right-left+1));
+  CSPL_Array_copy(inval, incopy, left, right, double);
 
   while (right > left) {
     t = incopy[k];

@@ -5,7 +5,6 @@
 
 #include <math.h>   
 #include <stdlib.h> /* qsort */
-#include <string.h> /* memcpy */
 
 #include "CSPL_Stats_CDF.h"
 #include "../Sort/CSPL_Sort.h"
@@ -64,9 +63,8 @@ void CSPL_Stats_tCDF(const double *datain,
   long i, count;
   double *incopy; // do this so that the input array is not changed
 
-  incopy = (double*)calloc(n, sizeof(double));
-  memcpy(incopy, datain, sizeof(double)*n);
-  
+  CSPL_Array_copy(datain, incopy, 0, n, double);
+
   // sort the data
   qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
   for (i=0;i<n;i++) {

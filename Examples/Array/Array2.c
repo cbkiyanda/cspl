@@ -1,7 +1,4 @@
 
-// gcc -I../../CSPL/Array -L../../ Array2.c -lm -Wall -lCSPL -o Array2 -O3
-// install_name_tool -add_rpath ../../ Array2
-
 
 #include <stdio.h>
 
@@ -10,6 +7,7 @@
 int main(void) {
   double dat1[5] = {1, 2, 5, 7, 8};
   double dat2[5] = {2, 3, 4, 6, 5};
+  double *cpyarray;
   long i;
   const char* filename = "test_dump.csv";
 
@@ -34,6 +32,17 @@ int main(void) {
 
   CSPL_Array_filedump1d(filename, 5, 2, dat1, dat2);
 
+  {
+  double dat1[5] = {1, 2, 5, 7, 8};
+
+  printf("\n\nCopying a subarray from original dat1\n");
+  CSPL_Array_copy(dat1, cpyarray, 1, 4, double);
+
+  for (i=0;i<3;i++)
+    printf("cpyarray[%ld]=%lf\n", i, cpyarray[i]);
+  free(cpyarray);
+
+  }
   return(0);
 }
 

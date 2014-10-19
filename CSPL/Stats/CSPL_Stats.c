@@ -1,9 +1,9 @@
 
 #include <math.h>   /* log and exp */
 #include <stdlib.h> /* qsort */
-#include <string.h> /* memcpy */
 
 #include "CSPL_Stats.h"
+#include "../Array/CSPL_Array.h"
 #include "../Sort/CSPL_Sort.h"
 
 
@@ -61,11 +61,10 @@ double CSPL_Stats_kurtosis(double *inval,    // (input) input array
 
 double CSPL_Stats_geometric_mean(double *inval, long n) {
   long i;
-  double *incopy; // do this so that the input array is not changed
+  double *incopy=NULL; // do this so that the input array is not changed
   double geommean;
 
-  incopy = (double*)calloc(n, sizeof(double));
-  memcpy(incopy, inval, sizeof(double)*n);
+  CSPL_Array_copy(inval, incopy, 0, n, double);
   
   for (i=0;i<n;i++) {
     incopy[i] = log(incopy[i]);
@@ -116,10 +115,10 @@ double CSPL_Stats_percentile(double *inval,     // (input) input array
   double answer;
 
   //cdf    = (double*)calloc(n, sizeof(double));
-  incopy = (double*)calloc(n, sizeof(double));
   rank   = (double*)calloc(n, sizeof(double));
 
-  memcpy(incopy, inval, sizeof(double)*n);
+  CSPL_Array_copy(inval, incopy, 0, n, double);
+
   qsort(incopy, n, sizeof(double *), CSPL_Sort_comparedoubles);
 
   // compute the CDF

@@ -7,11 +7,29 @@
 #define CSPL_Array_H
 
 #include <float.h>
+#include <stdlib.h>
+#include <string.h> /* memcpy */
 
 
 /************************************************
     MACROS
 *************************************************/
+/**
+ * \def CSPL_Array_copy(a, b, istart, istop, n, type)
+ * Macro to copy a chunk of an array, the output array memory is allocated, 
+ * the user must then free it! Copyies the istart but not the istop index
+ *
+ * @param [in] a The input array.
+ * @param [in] b The output copy array.
+ * @param [in] istart first index to copy
+ * @param [in] istop the last index to copy
+ * @param [in] n The number of elements in each array.
+ * @param [in] type The type of the array to copy
+ */
+#define CSPL_Array_copy(a, b, istart, istop, type) {b = (type *)calloc((istop)-(istart), sizeof(type)); \
+    memcpy((b), &(a)[(istart)], sizeof(type)*((istop)-(istart)+1));}
+
+
 
 #define Array_dblcmp(x, y) (fabs((x)-(y)) < DBL_EPSILON * fabs((x)+(y)) \
 				|| fabs((x)-(y)) < DBL_MIN)
@@ -150,5 +168,6 @@ double CSPL_Array_sum(double *a, unsigned long n);
 double CSPL_Array_suml(long *a, unsigned long n);
 
 long CSPL_Array_bisect(double val, double *a, unsigned long n);
+
 
 #endif /* CSPL_Array_H */
