@@ -26,7 +26,7 @@
  * @param [in] n The number of elements in each array.
  * @param [in] type The type of the array to copy
  */
-#define CSPL_Array_copy(a, b, istart, istop, type) {b = (type *)calloc((istop)-(istart), sizeof(type)); \
+#define CSPL_Array_copy(a, b, istart, istop, type) {b = (type *)calloc((istop)-(istart)+1, sizeof(type)); \
     memcpy((b), &(a)[(istart)], sizeof(type)*((istop)-(istart)+1));}
 
 
