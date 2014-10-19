@@ -1,5 +1,7 @@
 #include <stdlib.h> /* qsort */
+#include <stdio.h>
 
+#include "../Array/CSPL_Array.h"
 #include "CSPL_Sort.h"
 
 
@@ -14,6 +16,9 @@ typedef struct argsort_struct {
 } argsort_struct;
 
 typedef int (*compfn)(const void*, const void*);
+
+
+static int compare_argsort_struct( argsort_struct *a,  argsort_struct *b);
 
 
 // from stdlib example docs
@@ -98,6 +103,61 @@ long CSPL_Sort_gnomesort(double *inval, /* array to be sorted in place */
   }
   return(nswaps);
 }
+
+static void merge(double *A, long a, double *B, long b, double *C) {
+  int i=0,j=0,k=0;
+  while (i < a && j < b) {
+    if (A[i] <= B[j]) {
+	  /* copy A[i] to C[k] and move the pointer i and k forward */
+	  C[k] = A[i];
+	  i++;
+	  k++;
+    }
+    else {
+      /* copy B[j] to C[k] and move the pointer j and k forward */
+      C[k] = B[j];
+      j++;
+      k++;
+    }
+  }
+  /* move the remaining elements in A into C */
+  while (i < a) {
+    C[k]= A[i];
+    i++;
+    k++;
+  }
+  /* move the remaining elements in B into C */
+  while (j < b)  {
+    C[k]= B[j];
+    j++;
+    k++;
+  }
+}  
+
+void CSPL_Sort_mergesort(double *inval, /* array to be sorted in place */
+			 long n) {      /* length of array */
+  double *A1, *A2;
+  long n1, n2;
+  if (n<2)
+    return; // only one element is sorted 
+  
+  n1 = n/2;
+  n2 = n-n1;
+  A1 = (double *)calloc(n1, sizeof(double));
+  A2 = (double *)calloc(n2, sizeof(double));
+  // first n/2 elements copy from inval to A1
+  CSPL_Array_copy(inval, A1, 0, n1, double);
+  // the rest go to A1
+  CSPL_Array_copy(inval, A2, n1, n, double);
+  CSPL_Sort_mergesort(A1, n1);
+  CSPL_Sort_mergesort(A2, n2);
+  
+  // put them together
+  merge(A1, n1, A2, n2, inval);
+  free(A1);
+  free(A2); 
+}
+
 
 #undef Sort_SWAP /* keep this local */
 

@@ -32,6 +32,22 @@ int main(void) {
     printf("%5ld\n", inds2[i]);
   }
 
+  {
+  double dat1[5] = {4, 2, 10, 123, 2};
+  double dat2[5] = {5, 6, 30, 2, 1};
+
+  printf("\n\nDo a mergesort on the arrays\n");
+  CSPL_Sort_mergesort(dat1, 5);
+  CSPL_Sort_mergesort(dat2, 5);
+  printf("\tArray1\tArray2\n");
+  for (i=0;i<5;i++) {
+    printf("%5ld\t", i);
+    printf("%5.1lf\t", dat1[i]);
+    printf("%5.1lf\n", dat2[i]);
+  }
+
+  }
+
   return(0);
 }
 

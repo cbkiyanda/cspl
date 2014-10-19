@@ -34,4 +34,12 @@ void CSPL_Sort_argsort(double *inval, /* (input) array to sort */
 long CSPL_Sort_gnomesort(double *inval, /* array to be sorted in place */
 			 long n);       /* length of array */
 
+/*
+ * Implementation of mergesort (top down)
+ *
+ */
+void CSPL_Sort_mergesort(double *inval, /* array to be sorted in place */
+			 long n);       /* length of array */
+
+
 #endif /* CSPL_Sort_H */
