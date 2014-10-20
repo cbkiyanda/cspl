@@ -21,4 +21,6 @@ run ["cmake", "cspl", "-DBUILD_SHARED_LIBS=ON", "-DBUILD_TESTS=ON", "-DBUILD_EXA
 run make -j2
 run make install
 
-entrypoint [ "ctest" ]
+#entrypoint [ "ctest" ]
+CMD [ "ctest" ]
+
