@@ -109,6 +109,26 @@ int main(void) {
     }	
   }
 
+  {
+    // test CSPL_Stats_combination()
+    unsigned long ans[30] = {1, 0, 0, 3, 1, 0, 6, 4, 1, 10, 10, 5, 15, 20, 15, 21, 35, 
+			     35, 28, 56, 70, 36, 84, 126, 45, 120, 210};
+    unsigned long N[10] = {2, 3, 4, 5, 6, 7, 8, 9, 10};
+    unsigned long k[3] = {2, 3, 4};
+    unsigned long NN, kk, val, tmp=0;
+
+    for(NN=0; NN<10;NN++) {
+      for (kk=0; kk<3; kk++) {
+	val = CSPL_Stats_combination(N[NN], k[kk]);
+	printf("CSPL_Stats_combination(%ld, %ld)=%ld -> %ld\n", N[NN], k[kk], val, ans[tmp]);
+	assert_long_test(val, ans[tmp]);
+	tmp++;
+      }
+    }
+    
+    
+  }
+
   return(0);
 }
 

@@ -178,4 +178,16 @@ double CSPL_Stats_FDrule(double *inval,     // (input) input array
   return(2.*CSPL_Stats_IQR(inval, n)/pow(n, (1./3.)));
 }
 
+/* compute the combinations of numbers */
+unsigned long CSPL_Stats_combination(unsigned long N,   // number of things
+				     unsigned long k) { // number to pick
+  unsigned long ans=1;
+  unsigned long i; 
+  
+  if ( (k > N) || (N == 0) || (k == 0) )
+    return(0);
+  for (i=0; i<array_min(k, N-k); i++)
+    ans = (ans*(N-i))/(i+1);
+  return(ans);
+}
 

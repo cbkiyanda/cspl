@@ -51,6 +51,9 @@ double CSPL_Stats_FDrule(double *inval,     // (input) input array
 double CSPL_Stats_percent_rank(long n,  // element number (zero based!)
 			       long N); // total number of elements
 
+/* compute the percent rank of each measurement in an array */
+unsigned long CSPL_Stats_combination(unsigned long N,  // number of things
+				     unsigned long k); // number to pick
 
 #endif /* CSPL_Stats_H */
 
