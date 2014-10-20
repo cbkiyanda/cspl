@@ -7,3 +7,5 @@ add_subdirectory(Sort)
 add_subdirectory(Special)
 add_subdirectory(Stats)
 add_subdirectory(Histogram)
+add_subdirectory(Regression)
+

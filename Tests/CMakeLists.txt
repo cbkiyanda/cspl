@@ -26,3 +26,6 @@ add_executable( Test_Special Test_Special.c )
 add_test( Special-test Test_Special )
 target_link_libraries (Test_Special LINK_PUBLIC CSPL)
 
+add_executable( Test_Regression Test_Regression.c )
+add_test( Regression-test Test_Regression )
+target_link_libraries (Test_Regression LINK_PUBLIC CSPL)

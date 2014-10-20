@@ -17,6 +17,7 @@ add_subdirectory (CSPL/Sort)
 add_subdirectory (CSPL/Array)
 add_subdirectory (CSPL/Special)
 add_subdirectory (CSPL/Histogram)
+add_subdirectory (CSPL/Regression)
 
 set (CSPL_TARGET_OBJECTS
     $<TARGET_OBJECTS:CSPL_Stats>
@@ -24,6 +25,7 @@ set (CSPL_TARGET_OBJECTS
     $<TARGET_OBJECTS:CSPL_Array>
     $<TARGET_OBJECTS:CSPL_Special>
     $<TARGET_OBJECTS:CSPL_Histogram>
+    $<TARGET_OBJECTS:CSPL_Regression>
     )
          
 add_library (CSPL ${CSPL_TARGET_OBJECTS})
