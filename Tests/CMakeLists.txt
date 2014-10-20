@@ -22,3 +22,7 @@ add_executable( Test_Stats_Median Test_Stats_Median.c )
 add_test( Stats_Median-test Test_Stats_Median )
 target_link_libraries (Test_Stats_Median LINK_PUBLIC CSPL)
 
+add_executable( Test_Special Test_Special.c )
+add_test( Special-test Test_Special )
+target_link_libraries (Test_Special LINK_PUBLIC CSPL)
+

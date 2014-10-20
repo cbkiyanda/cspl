@@ -24,7 +24,8 @@ double CSPL_Special_Erf1(double x); // (input) position to compute the error fun
  */
 double CSPL_Special_Erf_inverse1(double x); // (input) position to compute the inverse [-1, 1]
 
-
+/* Compute the factorial of an integer */
+long CSPL_Special_factorial(long n);
 
 #endif /* CSPL_Special_H */
 

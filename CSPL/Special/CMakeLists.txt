@@ -1,6 +1,7 @@
 # add files into this variable
 set ( CSPL_Special_Files 
     CSPL_ERF.c 
+    CSPL_Special.c 
     CSPL_Special.h )
 
 add_library (CSPL_Special OBJECT ${CSPL_Special_Files})
