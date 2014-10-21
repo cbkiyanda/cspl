@@ -33,7 +33,7 @@ double CSPL_Regression_TheilSen(double *x, double *y, long n, double *slope, dou
   double dx;
   unsigned long i, j, k;
   unsigned long combs;
-  double SStot=0, SSres=0, ymean;
+  double rsq;
   
   combs = CSPL_Stats_combination(n, 2); // number of point combinations of n data points
       
@@ -63,16 +63,11 @@ double CSPL_Regression_TheilSen(double *x, double *y, long n, double *slope, dou
   *intercept = CSPL_Stats_median_quickselect(intercepts, n); 
 
   // figure out the R**2 value
-  ymean = CSPL_Stats_mean(y, n);
-  for (i=0; i<n; i++) {
-    SStot += ((y[i]-ymean)*(y[i]-ymean));
-    // need sum of squared residuals
-    SSres += ((y[i]-*slope*x[i]+*intercept)*(y[i]-*slope*x[i]+*intercept));
-  }
-  
+  rsq = CSPL_Regression_LinearRsq(x, y, n, *slope, *intercept);
+
   free(slopes);
   free(intercepts);
-  return(1-SSres/SStot);
+  return(rsq);
 }
 
 

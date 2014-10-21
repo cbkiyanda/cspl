@@ -23,10 +23,24 @@ int main(void) {
     printf("Slope: %lf, Intercept=%lf, R**2=%lf\n", slope, intercept, rsq);
     assert_float_test(slope, 0.965142, 1e-6);
     assert_float_test(intercept, 0.022142, 1e-6);
-    assert_float_test(intercept, 0.022142, 1e-6);
     assert_float_test(rsq, 0.879878, 1e-6);
     
   }
+  {
+    // test CSPL_Regression_LinearRsq()
+    double x[10] = {1,2,3,4,5,6,7,8,9, 10};
+    double y[10] = {0.86074211,  2.243673  ,  2.32922599,  3.5269751 ,  5.19649183,
+		    4.55875795,  8.6822283 ,  7.86981641,  9.0570581 ,  7.766994};
+    double slope = 0.965142;
+    double intercept = 0.022142;
+    double ans = 0.879878;
+    double rsq;
+    
+    printf("CSPL_Regression_LinearRsq()\n");
+    rsq = CSPL_Regression_LinearRsq(x, y, 10, slope, intercept);
+    assert_float_test(rsq, ans, 1e-6);
+  }
+
   return(0);
 }
 
