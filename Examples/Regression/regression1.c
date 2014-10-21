@@ -9,16 +9,17 @@ int main(void) {
 		  4.55875795,  8.6822283 ,  7.86981641,  9.0570581 ,  7.766994};
   long i;
   double slope, intercept;
+  double rsq;
 
   //void CSPL_Regression_TheilSen(double *x, double *y, long n, double *slope, double *intercept)
-  CSPL_Regression_TheilSen(x, y, 10, &slope, &intercept);
+  rsq = CSPL_Regression_TheilSen(x, y, 10, &slope, &intercept);
   
   printf("%10s\t%10s\n", "x", "y");
   for (i=0; i<10; i++) {
     printf("%10.2lf\t%10.2lf\n", x[i], y[i]);
   }
   printf("\n");
-  printf("Slope: %lf, Intercept=%lf\n", slope, intercept);
+  printf("Slope: %lf, Intercept=%lf, R**2=%lf\n", slope, intercept, rsq);
 
 
   return(0);
