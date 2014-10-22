@@ -4,6 +4,64 @@
 
 #include "CSPL_Regression.h"
 #include "../Stats/CSPL_Stats.h"
+#include "../MonteCarlo/CSPL_MonteCarlo.h"
+
+/** compute the robust Theil-Sen linear regression coefficients.
+ * This also provides Jackknife confidence bands around the 
+ * regression parameters
+ */
+void CSPL_Regression_TheilSen_Jackknife(double *x, double *y, 
+					long n,
+					CSPL_Jackknife *jn_slope, 
+					CSPL_Jackknife *jn_int ) {
+  long ind_out;
+  double *xx;
+  double *yy;
+  long i;
+  double slope_tmp, intercept_tmp;
+
+  CSPL_Regression_TheilSen(x, y, n, &slope_tmp, &intercept_tmp);
+  jn_slope->centerval = slope_tmp;
+  jn_int->centerval   = intercept_tmp;
+  jn_slope->nreps     = 10;
+  jn_int->nreps       = 10;
+
+
+  xx = (double *)calloc(n-1, sizeof(double));
+  yy = (double *)calloc(n-1, sizeof(double));
+  jn_slope->data = (double *)calloc(n, sizeof(double));
+  jn_int->data = (double *)calloc(n, sizeof(double));
+
+  for (ind_out=0; ind_out<n; ind_out++) {
+    // populate tmp arrays with the data except the one left out
+    // TODO some thinking could make this two CSPL_Array_copy()
+    for (i=0; i<n; i++) {
+      if (i == ind_out) {
+	continue;
+      } else if (i > ind_out) {
+	xx[i-1] = x[i];
+	yy[i-1] = y[i];
+      } else {
+	xx[i] = x[i];
+	yy[i] = y[i];
+      }
+    }
+    // call CSPL_Regression_TheilSen() on the new data
+    CSPL_Regression_TheilSen(xx, yy, n-1, &slope_tmp, 
+			     &intercept_tmp);
+    jn_slope->data[ind_out] = slope_tmp;
+    //jn_slope->nreps++;
+    jn_int->data[ind_out] = intercept_tmp;
+    //jn_int->nreps++;
+  }
+
+  
+  free(xx);
+  free(yy);
+  free(jn_slope->data);
+  free(jn_int->data);
+}
+
 
 
 /** compute the robust Theil-Sen linear regression coefficients.
