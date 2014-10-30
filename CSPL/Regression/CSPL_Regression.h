@@ -2,7 +2,7 @@
 #ifndef CSPL_REGRESSION_H
 #define CSPL_REGRESSION_H
 
-#include "../MonteCarlo/CSPL_MonteCarlo.h"
+#include "CSPL_MonteCarlo.h"
 
 /* Theil-Sen regression */
 double CSPL_Regression_TheilSen(double *x, double *y, long n, double *slope, double *intercept);
